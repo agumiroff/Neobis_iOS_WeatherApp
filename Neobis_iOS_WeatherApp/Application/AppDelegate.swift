@@ -9,11 +9,19 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
+    private var flowFactory: FlowFactory!
+    private var moduleFactory: ModuleFactory!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        flowFactory = FlowFactoryImplementation()
+        moduleFactory = ModuleFactoryImplementation()
+        
+        DIContainer.standart.register(flowFactory!)
+        DIContainer.standart.register(moduleFactory!)
+        
         return true
     }
 

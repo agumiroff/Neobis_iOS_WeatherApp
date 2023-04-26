@@ -7,20 +7,131 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		010683DAD35FA91E44D5DB1A /* Pods_Neobis_iOS_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C45180275D3A1EB2784944C5 /* Pods_Neobis_iOS_WeatherApp.framework */; };
 		C6D62EC429F6FF9700B33E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EC329F6FF9700B33E9D /* AppDelegate.swift */; };
 		C6D62EC629F6FF9700B33E9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EC529F6FF9700B33E9D /* SceneDelegate.swift */; };
 		C6D62EC829F6FF9700B33E9D /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EC729F6FF9700B33E9D /* MainScreenViewController.swift */; };
 		C6D62ECD29F6FF9800B33E9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6D62ECC29F6FF9800B33E9D /* Assets.xcassets */; };
 		C6D62ED029F6FF9800B33E9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D62ECE29F6FF9800B33E9D /* LaunchScreen.storyboard */; };
-		C6D62EE329F7010E00B33E9D /* Constaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EE229F7010E00B33E9D /* Constaints.swift */; };
-		C6D62EE729F7284300B33E9D /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EE629F7284300B33E9D /* MainScreenViewModel.swift */; };
+		C6D62EE329F7010E00B33E9D /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EE229F7010E00B33E9D /* Resources.swift */; };
+		C6D62EF129F72CEA00B33E9D /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EF029F72CEA00B33E9D /* ModuleFactory.swift */; };
+		C6D62EF329F72D6300B33E9D /* ModuleFactoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EF229F72D6300B33E9D /* ModuleFactoryImplementation.swift */; };
+		C6D62EF929F73C4E00B33E9D /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EF829F73C4E00B33E9D /* MainScreenViewModel.swift */; };
+		C6D62EFF29F73D2300B33E9D /* MainFlowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62EFE29F73D2300B33E9D /* MainFlowNavigation.swift */; };
+		C6D62F0A29F7457400B33E9D /* FlowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F0929F7457400B33E9D /* FlowFactory.swift */; };
+		C6D62F0C29F745BE00B33E9D /* FlowFactoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F0B29F745BE00B33E9D /* FlowFactoryImplementation.swift */; };
+		C6D62F0E29F74C6000B33E9D /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F0D29F74C6000B33E9D /* MainFlowCoordinator.swift */; };
+		C6D62F1129F74EDD00B33E9D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F1029F74EDD00B33E9D /* DetailViewController.swift */; };
+		C6D62F1329F74F1500B33E9D /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F1229F74F1500B33E9D /* DetailViewModel.swift */; };
+		C6D62F1829F750A500B33E9D /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F1729F750A500B33E9D /* DIContainer.swift */; };
+		C6D62F1B29F777F600B33E9D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F1A29F777F600B33E9D /* ViewModel.swift */; };
+		C6D62F1D29F7783F00B33E9D /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F1C29F7783F00B33E9D /* View.swift */; };
+		C6D62F1F29F7831E00B33E9D /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F1E29F7831E00B33E9D /* FlowCoordinator.swift */; };
+		C6D62F2129F7835900B33E9D /* FlowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F2029F7835900B33E9D /* FlowNavigation.swift */; };
+		C6D62F2429F8941000B33E9D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F2329F8941000B33E9D /* UIColor+Extension.swift */; };
+		C6D62F2729F89CF900B33E9D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D62F2629F89CF900B33E9D /* CustomLabel.swift */; };
+		C6D6304A29F8A08A00B33E9D /* Asap-VariableFont_wdth,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FEB29F8A08900B33E9D /* Asap-VariableFont_wdth,wght.ttf */; };
+		C6D6304B29F8A08A00B33E9D /* Asap_SemiCondensed-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FED29F8A08900B33E9D /* Asap_SemiCondensed-MediumItalic.ttf */; };
+		C6D6304C29F8A08A00B33E9D /* Asap-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FEE29F8A08900B33E9D /* Asap-ExtraLight.ttf */; };
+		C6D6304D29F8A08A00B33E9D /* Asap_SemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FEF29F8A08900B33E9D /* Asap_SemiCondensed-Italic.ttf */; };
+		C6D6304E29F8A08A00B33E9D /* Asap-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF029F8A08900B33E9D /* Asap-ThinItalic.ttf */; };
+		C6D6304F29F8A08A00B33E9D /* Asap_Expanded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF129F8A08900B33E9D /* Asap_Expanded-Light.ttf */; };
+		C6D6305029F8A08A00B33E9D /* Asap-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF229F8A08900B33E9D /* Asap-Thin.ttf */; };
+		C6D6305129F8A08A00B33E9D /* Asap_Condensed-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF329F8A08900B33E9D /* Asap_Condensed-BlackItalic.ttf */; };
+		C6D6305229F8A08A00B33E9D /* Asap-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF429F8A08900B33E9D /* Asap-ExtraBold.ttf */; };
+		C6D6305329F8A08A00B33E9D /* Asap_SemiExpanded-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF529F8A08900B33E9D /* Asap_SemiExpanded-SemiBold.ttf */; };
+		C6D6305429F8A08A00B33E9D /* Asap-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF629F8A08900B33E9D /* Asap-BoldItalic.ttf */; };
+		C6D6305529F8A08A00B33E9D /* Asap_Condensed-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF729F8A08900B33E9D /* Asap_Condensed-MediumItalic.ttf */; };
+		C6D6305629F8A08A00B33E9D /* Asap-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF829F8A08900B33E9D /* Asap-MediumItalic.ttf */; };
+		C6D6305729F8A08A00B33E9D /* Asap_SemiExpanded-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FF929F8A08900B33E9D /* Asap_SemiExpanded-ExtraBold.ttf */; };
+		C6D6305829F8A08A00B33E9D /* Asap_SemiCondensed-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FFA29F8A08900B33E9D /* Asap_SemiCondensed-ExtraLightItalic.ttf */; };
+		C6D6305929F8A08A00B33E9D /* Asap_Condensed-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FFB29F8A08900B33E9D /* Asap_Condensed-ThinItalic.ttf */; };
+		C6D6305A29F8A08A00B33E9D /* Asap_SemiExpanded-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FFC29F8A08900B33E9D /* Asap_SemiExpanded-MediumItalic.ttf */; };
+		C6D6305B29F8A08A00B33E9D /* Asap-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FFD29F8A08900B33E9D /* Asap-BlackItalic.ttf */; };
+		C6D6305C29F8A08A00B33E9D /* Asap_Condensed-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FFE29F8A08900B33E9D /* Asap_Condensed-ExtraLight.ttf */; };
+		C6D6305D29F8A08A00B33E9D /* Asap_Expanded-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D62FFF29F8A08900B33E9D /* Asap_Expanded-LightItalic.ttf */; };
+		C6D6305E29F8A08A00B33E9D /* Asap_Expanded-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300029F8A08900B33E9D /* Asap_Expanded-Italic.ttf */; };
+		C6D6305F29F8A08A00B33E9D /* Asap-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300129F8A08900B33E9D /* Asap-Medium.ttf */; };
+		C6D6306029F8A08A00B33E9D /* Asap-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300229F8A08900B33E9D /* Asap-Bold.ttf */; };
+		C6D6306129F8A08A00B33E9D /* Asap_SemiExpanded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300329F8A08900B33E9D /* Asap_SemiExpanded-Regular.ttf */; };
+		C6D6306229F8A08A00B33E9D /* Asap_Condensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300429F8A08900B33E9D /* Asap_Condensed-BoldItalic.ttf */; };
+		C6D6306329F8A08A00B33E9D /* Asap_Condensed-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300529F8A08900B33E9D /* Asap_Condensed-Black.ttf */; };
+		C6D6306429F8A08A00B33E9D /* Asap_SemiCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300629F8A08900B33E9D /* Asap_SemiCondensed-Regular.ttf */; };
+		C6D6306529F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300729F8A08900B33E9D /* Asap_SemiExpanded-ExtraLightItalic.ttf */; };
+		C6D6306629F8A08A00B33E9D /* Asap_Condensed-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300829F8A08900B33E9D /* Asap_Condensed-SemiBoldItalic.ttf */; };
+		C6D6306729F8A08A00B33E9D /* Asap_Expanded-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300929F8A08900B33E9D /* Asap_Expanded-ExtraBold.ttf */; };
+		C6D6306829F8A08A00B33E9D /* Asap_Expanded-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300A29F8A08900B33E9D /* Asap_Expanded-BoldItalic.ttf */; };
+		C6D6306929F8A08A00B33E9D /* Asap-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300B29F8A08900B33E9D /* Asap-LightItalic.ttf */; };
+		C6D6306A29F8A08A00B33E9D /* Asap-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300C29F8A08900B33E9D /* Asap-ExtraLightItalic.ttf */; };
+		C6D6306B29F8A08A00B33E9D /* Asap_SemiCondensed-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300D29F8A08900B33E9D /* Asap_SemiCondensed-Black.ttf */; };
+		C6D6306C29F8A08A00B33E9D /* Asap_Expanded-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300E29F8A08900B33E9D /* Asap_Expanded-ExtraLight.ttf */; };
+		C6D6306D29F8A08A00B33E9D /* Asap_Expanded-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6300F29F8A08900B33E9D /* Asap_Expanded-BlackItalic.ttf */; };
+		C6D6306E29F8A08A00B33E9D /* Asap_Expanded-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301029F8A08900B33E9D /* Asap_Expanded-Thin.ttf */; };
+		C6D6306F29F8A08A00B33E9D /* Asap_Expanded-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301129F8A08900B33E9D /* Asap_Expanded-ThinItalic.ttf */; };
+		C6D6307029F8A08A00B33E9D /* Asap_Expanded-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301229F8A08900B33E9D /* Asap_Expanded-SemiBoldItalic.ttf */; };
+		C6D6307129F8A08A00B33E9D /* Asap_SemiExpanded-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301329F8A08900B33E9D /* Asap_SemiExpanded-Italic.ttf */; };
+		C6D6307229F8A08A00B33E9D /* Asap_Condensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301429F8A08900B33E9D /* Asap_Condensed-Medium.ttf */; };
+		C6D6307329F8A08A00B33E9D /* Asap-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301529F8A08900B33E9D /* Asap-SemiBoldItalic.ttf */; };
+		C6D6307429F8A08A00B33E9D /* Asap_SemiCondensed-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301629F8A08900B33E9D /* Asap_SemiCondensed-ExtraBold.ttf */; };
+		C6D6307529F8A08A00B33E9D /* Asap_SemiExpanded-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301729F8A08900B33E9D /* Asap_SemiExpanded-ExtraBoldItalic.ttf */; };
+		C6D6307629F8A08A00B33E9D /* Asap_Expanded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301829F8A08900B33E9D /* Asap_Expanded-Bold.ttf */; };
+		C6D6307729F8A08A00B33E9D /* Asap_Condensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301929F8A08900B33E9D /* Asap_Condensed-LightItalic.ttf */; };
+		C6D6307829F8A08A00B33E9D /* Asap_SemiCondensed-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301A29F8A08900B33E9D /* Asap_SemiCondensed-ExtraBoldItalic.ttf */; };
+		C6D6307929F8A08A00B33E9D /* Asap-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301B29F8A08900B33E9D /* Asap-Regular.ttf */; };
+		C6D6307A29F8A08A00B33E9D /* Asap-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301C29F8A08900B33E9D /* Asap-SemiBold.ttf */; };
+		C6D6307B29F8A08A00B33E9D /* Asap_SemiExpanded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301D29F8A08900B33E9D /* Asap_SemiExpanded-Light.ttf */; };
+		C6D6307C29F8A08A00B33E9D /* Asap-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301E29F8A08900B33E9D /* Asap-Black.ttf */; };
+		C6D6307D29F8A08A00B33E9D /* Asap-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6301F29F8A08900B33E9D /* Asap-ExtraBoldItalic.ttf */; };
+		C6D6307E29F8A08A00B33E9D /* Asap_SemiCondensed-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302029F8A08900B33E9D /* Asap_SemiCondensed-ThinItalic.ttf */; };
+		C6D6307F29F8A08A00B33E9D /* Asap_Expanded-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302129F8A08900B33E9D /* Asap_Expanded-SemiBold.ttf */; };
+		C6D6308029F8A08A00B33E9D /* Asap_SemiCondensed-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302229F8A08900B33E9D /* Asap_SemiCondensed-SemiBoldItalic.ttf */; };
+		C6D6308129F8A08A00B33E9D /* Asap_Condensed-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302329F8A08900B33E9D /* Asap_Condensed-ExtraLightItalic.ttf */; };
+		C6D6308229F8A08A00B33E9D /* Asap_SemiExpanded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302429F8A08900B33E9D /* Asap_SemiExpanded-Medium.ttf */; };
+		C6D6308329F8A08A00B33E9D /* Asap_Condensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302529F8A08900B33E9D /* Asap_Condensed-Italic.ttf */; };
+		C6D6308429F8A08A00B33E9D /* Asap_SemiCondensed-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302629F8A08900B33E9D /* Asap_SemiCondensed-ExtraLight.ttf */; };
+		C6D6308529F8A08A00B33E9D /* Asap_SemiCondensed-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302729F8A08900B33E9D /* Asap_SemiCondensed-BlackItalic.ttf */; };
+		C6D6308629F8A08A00B33E9D /* Asap_SemiExpanded-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302829F8A08900B33E9D /* Asap_SemiExpanded-LightItalic.ttf */; };
+		C6D6308729F8A08A00B33E9D /* Asap_SemiExpanded-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302929F8A08900B33E9D /* Asap_SemiExpanded-Black.ttf */; };
+		C6D6308829F8A08A00B33E9D /* Asap-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302A29F8A08A00B33E9D /* Asap-Light.ttf */; };
+		C6D6308929F8A08A00B33E9D /* Asap_SemiCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302B29F8A08A00B33E9D /* Asap_SemiCondensed-BoldItalic.ttf */; };
+		C6D6308A29F8A08A00B33E9D /* Asap_SemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302C29F8A08A00B33E9D /* Asap_SemiCondensed-SemiBold.ttf */; };
+		C6D6308B29F8A08A00B33E9D /* Asap_SemiExpanded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302D29F8A08A00B33E9D /* Asap_SemiExpanded-Bold.ttf */; };
+		C6D6308C29F8A08A00B33E9D /* Asap_Condensed-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302E29F8A08A00B33E9D /* Asap_Condensed-Thin.ttf */; };
+		C6D6308D29F8A08A00B33E9D /* Asap_Condensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6302F29F8A08A00B33E9D /* Asap_Condensed-Bold.ttf */; };
+		C6D6308E29F8A08A00B33E9D /* Asap_SemiExpanded-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303029F8A08A00B33E9D /* Asap_SemiExpanded-Thin.ttf */; };
+		C6D6308F29F8A08A00B33E9D /* Asap_Expanded-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303129F8A08A00B33E9D /* Asap_Expanded-MediumItalic.ttf */; };
+		C6D6309029F8A08A00B33E9D /* Asap_SemiExpanded-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303229F8A08A00B33E9D /* Asap_SemiExpanded-BoldItalic.ttf */; };
+		C6D6309129F8A08A00B33E9D /* Asap_Condensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303329F8A08A00B33E9D /* Asap_Condensed-Regular.ttf */; };
+		C6D6309229F8A08A00B33E9D /* Asap_SemiExpanded-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303429F8A08A00B33E9D /* Asap_SemiExpanded-ThinItalic.ttf */; };
+		C6D6309329F8A08A00B33E9D /* Asap_Condensed-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303529F8A08A00B33E9D /* Asap_Condensed-ExtraBold.ttf */; };
+		C6D6309429F8A08A00B33E9D /* Asap_Expanded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303629F8A08A00B33E9D /* Asap_Expanded-Regular.ttf */; };
+		C6D6309529F8A08A00B33E9D /* Asap_SemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303729F8A08A00B33E9D /* Asap_SemiCondensed-Light.ttf */; };
+		C6D6309629F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303829F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLight.ttf */; };
+		C6D6309729F8A08A00B33E9D /* Asap_Condensed-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303929F8A08A00B33E9D /* Asap_Condensed-ExtraBoldItalic.ttf */; };
+		C6D6309829F8A08A00B33E9D /* Asap_Condensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303A29F8A08A00B33E9D /* Asap_Condensed-SemiBold.ttf */; };
+		C6D6309929F8A08A00B33E9D /* Asap_SemiCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303B29F8A08A00B33E9D /* Asap_SemiCondensed-Bold.ttf */; };
+		C6D6309A29F8A08A00B33E9D /* Asap_SemiCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303C29F8A08A00B33E9D /* Asap_SemiCondensed-Medium.ttf */; };
+		C6D6309B29F8A08A00B33E9D /* Asap_Condensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303D29F8A08A00B33E9D /* Asap_Condensed-Light.ttf */; };
+		C6D6309C29F8A08A00B33E9D /* Asap_Expanded-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303E29F8A08A00B33E9D /* Asap_Expanded-ExtraBoldItalic.ttf */; };
+		C6D6309D29F8A08A00B33E9D /* Asap_Expanded-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6303F29F8A08A00B33E9D /* Asap_Expanded-Black.ttf */; };
+		C6D6309E29F8A08A00B33E9D /* Asap_Expanded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304029F8A08A00B33E9D /* Asap_Expanded-Medium.ttf */; };
+		C6D6309F29F8A08A00B33E9D /* Asap-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304129F8A08A00B33E9D /* Asap-Italic.ttf */; };
+		C6D630A029F8A08A00B33E9D /* Asap_SemiCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304229F8A08A00B33E9D /* Asap_SemiCondensed-LightItalic.ttf */; };
+		C6D630A129F8A08A00B33E9D /* Asap_Expanded-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304329F8A08A00B33E9D /* Asap_Expanded-ExtraLightItalic.ttf */; };
+		C6D630A229F8A08A00B33E9D /* Asap_SemiCondensed-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304429F8A08A00B33E9D /* Asap_SemiCondensed-Thin.ttf */; };
+		C6D630A329F8A08A00B33E9D /* Asap_SemiExpanded-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304529F8A08A00B33E9D /* Asap_SemiExpanded-BlackItalic.ttf */; };
+		C6D630A429F8A08A00B33E9D /* Asap_SemiExpanded-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304629F8A08A00B33E9D /* Asap_SemiExpanded-SemiBoldItalic.ttf */; };
+		C6D630A529F8A08A00B33E9D /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304729F8A08A00B33E9D /* OFL.txt */; };
+		C6D630A629F8A08A00B33E9D /* Asap-Italic-VariableFont_wdth,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304829F8A08A00B33E9D /* Asap-Italic-VariableFont_wdth,wght.ttf */; };
+		C6D630A729F8A08A00B33E9D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6D6304929F8A08A00B33E9D /* README.txt */; };
+		C6D630A929F8A6C700B33E9D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D630A829F8A6C700B33E9D /* UIViewController+Extension.swift */; };
+		C6D630AC29F8AB4100B33E9D /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D630AB29F8AB4100B33E9D /* TemperatureView.swift */; };
+		F44B306F1B1335B7F09D81A9 /* Pods_Neobis_iOS_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 801489ED40D18DB830992057 /* Pods_Neobis_iOS_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1BE080AE3E3EC77889E11BBD /* Pods-Neobis_iOS_WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neobis_iOS_WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-Neobis_iOS_WeatherApp/Pods-Neobis_iOS_WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
-		28C77E7C21B0F480C6963124 /* Pods-Neobis_iOS_WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neobis_iOS_WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-Neobis_iOS_WeatherApp/Pods-Neobis_iOS_WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C45180275D3A1EB2784944C5 /* Pods_Neobis_iOS_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neobis_iOS_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F09ACABF030B93E4F8218AB /* Pods-Neobis_iOS_WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neobis_iOS_WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-Neobis_iOS_WeatherApp/Pods-Neobis_iOS_WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
+		801489ED40D18DB830992057 /* Pods_Neobis_iOS_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neobis_iOS_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2A9331D6749C75E8B1441A6 /* Pods-Neobis_iOS_WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neobis_iOS_WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-Neobis_iOS_WeatherApp/Pods-Neobis_iOS_WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		C6D62EC029F6FF9700B33E9D /* Neobis_iOS_WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neobis_iOS_WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D62EC329F6FF9700B33E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6D62EC529F6FF9700B33E9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,8 +139,119 @@
 		C6D62ECC29F6FF9800B33E9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6D62ECF29F6FF9800B33E9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6D62ED129F6FF9800B33E9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6D62EE229F7010E00B33E9D /* Constaints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constaints.swift; sourceTree = "<group>"; };
-		C6D62EE629F7284300B33E9D /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		C6D62EE229F7010E00B33E9D /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		C6D62EF029F72CEA00B33E9D /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		C6D62EF229F72D6300B33E9D /* ModuleFactoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryImplementation.swift; sourceTree = "<group>"; };
+		C6D62EF829F73C4E00B33E9D /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		C6D62EFE29F73D2300B33E9D /* MainFlowNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowNavigation.swift; sourceTree = "<group>"; };
+		C6D62F0929F7457400B33E9D /* FlowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowFactory.swift; sourceTree = "<group>"; };
+		C6D62F0B29F745BE00B33E9D /* FlowFactoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowFactoryImplementation.swift; sourceTree = "<group>"; };
+		C6D62F0D29F74C6000B33E9D /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
+		C6D62F1029F74EDD00B33E9D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C6D62F1229F74F1500B33E9D /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		C6D62F1729F750A500B33E9D /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		C6D62F1A29F777F600B33E9D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		C6D62F1C29F7783F00B33E9D /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		C6D62F1E29F7831E00B33E9D /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
+		C6D62F2029F7835900B33E9D /* FlowNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowNavigation.swift; sourceTree = "<group>"; };
+		C6D62F2329F8941000B33E9D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C6D62F2629F89CF900B33E9D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		C6D62FEB29F8A08900B33E9D /* Asap-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
+		C6D62FED29F8A08900B33E9D /* Asap_SemiCondensed-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-MediumItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FEE29F8A08900B33E9D /* Asap-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6D62FEF29F8A08900B33E9D /* Asap_SemiCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		C6D62FF029F8A08900B33E9D /* Asap-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-ThinItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FF129F8A08900B33E9D /* Asap_Expanded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Light.ttf"; sourceTree = "<group>"; };
+		C6D62FF229F8A08900B33E9D /* Asap-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Thin.ttf"; sourceTree = "<group>"; };
+		C6D62FF329F8A08900B33E9D /* Asap_Condensed-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FF429F8A08900B33E9D /* Asap-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C6D62FF529F8A08900B33E9D /* Asap_SemiExpanded-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6D62FF629F8A08900B33E9D /* Asap-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FF729F8A08900B33E9D /* Asap_Condensed-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-MediumItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FF829F8A08900B33E9D /* Asap-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-MediumItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FF929F8A08900B33E9D /* Asap_SemiExpanded-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C6D62FFA29F8A08900B33E9D /* Asap_SemiCondensed-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FFB29F8A08900B33E9D /* Asap_Condensed-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-ThinItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FFC29F8A08900B33E9D /* Asap_SemiExpanded-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-MediumItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FFD29F8A08900B33E9D /* Asap-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C6D62FFE29F8A08900B33E9D /* Asap_Condensed-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6D62FFF29F8A08900B33E9D /* Asap_Expanded-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300029F8A08900B33E9D /* Asap_Expanded-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Italic.ttf"; sourceTree = "<group>"; };
+		C6D6300129F8A08900B33E9D /* Asap-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Medium.ttf"; sourceTree = "<group>"; };
+		C6D6300229F8A08900B33E9D /* Asap-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Bold.ttf"; sourceTree = "<group>"; };
+		C6D6300329F8A08900B33E9D /* Asap_SemiExpanded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Regular.ttf"; sourceTree = "<group>"; };
+		C6D6300429F8A08900B33E9D /* Asap_Condensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300529F8A08900B33E9D /* Asap_Condensed-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Black.ttf"; sourceTree = "<group>"; };
+		C6D6300629F8A08900B33E9D /* Asap_SemiCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Regular.ttf"; sourceTree = "<group>"; };
+		C6D6300729F8A08900B33E9D /* Asap_SemiExpanded-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300829F8A08900B33E9D /* Asap_Condensed-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300929F8A08900B33E9D /* Asap_Expanded-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C6D6300A29F8A08900B33E9D /* Asap_Expanded-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300B29F8A08900B33E9D /* Asap-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300C29F8A08900B33E9D /* Asap-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6300D29F8A08900B33E9D /* Asap_SemiCondensed-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Black.ttf"; sourceTree = "<group>"; };
+		C6D6300E29F8A08900B33E9D /* Asap_Expanded-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6D6300F29F8A08900B33E9D /* Asap_Expanded-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301029F8A08900B33E9D /* Asap_Expanded-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Thin.ttf"; sourceTree = "<group>"; };
+		C6D6301129F8A08900B33E9D /* Asap_Expanded-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-ThinItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301229F8A08900B33E9D /* Asap_Expanded-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301329F8A08900B33E9D /* Asap_SemiExpanded-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Italic.ttf"; sourceTree = "<group>"; };
+		C6D6301429F8A08900B33E9D /* Asap_Condensed-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Medium.ttf"; sourceTree = "<group>"; };
+		C6D6301529F8A08900B33E9D /* Asap-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301629F8A08900B33E9D /* Asap_SemiCondensed-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C6D6301729F8A08900B33E9D /* Asap_SemiExpanded-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301829F8A08900B33E9D /* Asap_Expanded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Bold.ttf"; sourceTree = "<group>"; };
+		C6D6301929F8A08900B33E9D /* Asap_Condensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301A29F8A08900B33E9D /* Asap_SemiCondensed-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6301B29F8A08900B33E9D /* Asap-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Regular.ttf"; sourceTree = "<group>"; };
+		C6D6301C29F8A08900B33E9D /* Asap-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6D6301D29F8A08900B33E9D /* Asap_SemiExpanded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Light.ttf"; sourceTree = "<group>"; };
+		C6D6301E29F8A08900B33E9D /* Asap-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Black.ttf"; sourceTree = "<group>"; };
+		C6D6301F29F8A08900B33E9D /* Asap-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302029F8A08900B33E9D /* Asap_SemiCondensed-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-ThinItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302129F8A08900B33E9D /* Asap_Expanded-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6D6302229F8A08900B33E9D /* Asap_SemiCondensed-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302329F8A08900B33E9D /* Asap_Condensed-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302429F8A08900B33E9D /* Asap_SemiExpanded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Medium.ttf"; sourceTree = "<group>"; };
+		C6D6302529F8A08900B33E9D /* Asap_Condensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Italic.ttf"; sourceTree = "<group>"; };
+		C6D6302629F8A08900B33E9D /* Asap_SemiCondensed-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6D6302729F8A08900B33E9D /* Asap_SemiCondensed-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302829F8A08900B33E9D /* Asap_SemiExpanded-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302929F8A08900B33E9D /* Asap_SemiExpanded-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Black.ttf"; sourceTree = "<group>"; };
+		C6D6302A29F8A08A00B33E9D /* Asap-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Light.ttf"; sourceTree = "<group>"; };
+		C6D6302B29F8A08A00B33E9D /* Asap_SemiCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6302C29F8A08A00B33E9D /* Asap_SemiCondensed-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6D6302D29F8A08A00B33E9D /* Asap_SemiExpanded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Bold.ttf"; sourceTree = "<group>"; };
+		C6D6302E29F8A08A00B33E9D /* Asap_Condensed-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Thin.ttf"; sourceTree = "<group>"; };
+		C6D6302F29F8A08A00B33E9D /* Asap_Condensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Bold.ttf"; sourceTree = "<group>"; };
+		C6D6303029F8A08A00B33E9D /* Asap_SemiExpanded-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-Thin.ttf"; sourceTree = "<group>"; };
+		C6D6303129F8A08A00B33E9D /* Asap_Expanded-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-MediumItalic.ttf"; sourceTree = "<group>"; };
+		C6D6303229F8A08A00B33E9D /* Asap_SemiExpanded-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-BoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6303329F8A08A00B33E9D /* Asap_Condensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Regular.ttf"; sourceTree = "<group>"; };
+		C6D6303429F8A08A00B33E9D /* Asap_SemiExpanded-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-ThinItalic.ttf"; sourceTree = "<group>"; };
+		C6D6303529F8A08A00B33E9D /* Asap_Condensed-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C6D6303629F8A08A00B33E9D /* Asap_Expanded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Regular.ttf"; sourceTree = "<group>"; };
+		C6D6303729F8A08A00B33E9D /* Asap_SemiCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Light.ttf"; sourceTree = "<group>"; };
+		C6D6303829F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6D6303929F8A08A00B33E9D /* Asap_Condensed-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6303A29F8A08A00B33E9D /* Asap_Condensed-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-SemiBold.ttf"; sourceTree = "<group>"; };
+		C6D6303B29F8A08A00B33E9D /* Asap_SemiCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		C6D6303C29F8A08A00B33E9D /* Asap_SemiCondensed-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Medium.ttf"; sourceTree = "<group>"; };
+		C6D6303D29F8A08A00B33E9D /* Asap_Condensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Condensed-Light.ttf"; sourceTree = "<group>"; };
+		C6D6303E29F8A08A00B33E9D /* Asap_Expanded-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6303F29F8A08A00B33E9D /* Asap_Expanded-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Black.ttf"; sourceTree = "<group>"; };
+		C6D6304029F8A08A00B33E9D /* Asap_Expanded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-Medium.ttf"; sourceTree = "<group>"; };
+		C6D6304129F8A08A00B33E9D /* Asap-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Italic.ttf"; sourceTree = "<group>"; };
+		C6D6304229F8A08A00B33E9D /* Asap_SemiCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6304329F8A08A00B33E9D /* Asap_Expanded-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_Expanded-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		C6D6304429F8A08A00B33E9D /* Asap_SemiCondensed-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiCondensed-Thin.ttf"; sourceTree = "<group>"; };
+		C6D6304529F8A08A00B33E9D /* Asap_SemiExpanded-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-BlackItalic.ttf"; sourceTree = "<group>"; };
+		C6D6304629F8A08A00B33E9D /* Asap_SemiExpanded-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap_SemiExpanded-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		C6D6304729F8A08A00B33E9D /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		C6D6304829F8A08A00B33E9D /* Asap-Italic-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Asap-Italic-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
+		C6D6304929F8A08A00B33E9D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		C6D630A829F8A6C700B33E9D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C6D630AB29F8AB4100B33E9D /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,28 +259,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				010683DAD35FA91E44D5DB1A /* Pods_Neobis_iOS_WeatherApp.framework in Frameworks */,
+				F44B306F1B1335B7F09D81A9 /* Pods_Neobis_iOS_WeatherApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5EF9E83562BD5481F52747F0 /* Frameworks */ = {
+		1331C1E590DBF00852A4406C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C45180275D3A1EB2784944C5 /* Pods_Neobis_iOS_WeatherApp.framework */,
+				801489ED40D18DB830992057 /* Pods_Neobis_iOS_WeatherApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9837D69F3AA66638D68049C4 /* Pods */ = {
+		572F04434845CB886BE4497E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				28C77E7C21B0F480C6963124 /* Pods-Neobis_iOS_WeatherApp.debug.xcconfig */,
-				1BE080AE3E3EC77889E11BBD /* Pods-Neobis_iOS_WeatherApp.release.xcconfig */,
+				4F09ACABF030B93E4F8218AB /* Pods-Neobis_iOS_WeatherApp.debug.xcconfig */,
+				B2A9331D6749C75E8B1441A6 /* Pods-Neobis_iOS_WeatherApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -67,8 +288,8 @@
 			children = (
 				C6D62EC229F6FF9700B33E9D /* Neobis_iOS_WeatherApp */,
 				C6D62EC129F6FF9700B33E9D /* Products */,
-				9837D69F3AA66638D68049C4 /* Pods */,
-				5EF9E83562BD5481F52747F0 /* Frameworks */,
+				572F04434845CB886BE4497E /* Pods */,
+				1331C1E590DBF00852A4406C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +304,8 @@
 		C6D62EC229F6FF9700B33E9D /* Neobis_iOS_WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C6D62F1429F7504600B33E9D /* Dependencies */,
+				C6D62F1929F777E800B33E9D /* Base */,
 				C6D62ED929F6FFBB00B33E9D /* Core */,
 				C6D62ED829F6FFB000B33E9D /* Application */,
 				C6D62ED729F6FF9F00B33E9D /* Resources */,
@@ -113,34 +336,19 @@
 		C6D62ED929F6FFBB00B33E9D /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C6D62EE529F7282C00B33E9D /* Coordinator */,
-				C6D62EDA29F6FFC000B33E9D /* UI */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		C6D62EDA29F6FFC000B33E9D /* UI */ = {
-			isa = PBXGroup;
-			children = (
+				C6D62EED29F72CC600B33E9D /* Factories */,
+				C6D62EE429F7280600B33E9D /* Screens */,
 				C6D62EDB29F6FFC300B33E9D /* Flows */,
 			);
-			path = UI;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		C6D62EDB29F6FFC300B33E9D /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				C6D62EDC29F6FFC800B33E9D /* MainFlow */,
+				C6D62EFB29F73CF200B33E9D /* MainFlow */,
 			);
 			path = Flows;
-			sourceTree = "<group>";
-		};
-		C6D62EDC29F6FFC800B33E9D /* MainFlow */ = {
-			isa = PBXGroup;
-			children = (
-				C6D62EE429F7280600B33E9D /* MainScreen */,
-			);
-			path = MainFlow;
 			sourceTree = "<group>";
 		};
 		C6D62EDD29F700D400B33E9D /* Model */ = {
@@ -161,7 +369,7 @@
 		C6D62EDF29F700DA00B33E9D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C6D62EE629F7284300B33E9D /* MainScreenViewModel.swift */,
+				C6D62EF829F73C4E00B33E9D /* MainScreenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -169,14 +377,45 @@
 		C6D62EE029F700F600B33E9D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C6D62EE229F7010E00B33E9D /* Constaints.swift */,
+				C6D62F2B29F8A02E00B33E9D /* Fonts */,
+				C6D62F2529F89CE800B33E9D /* CustomUIElements */,
+				C6D62F2229F8940100B33E9D /* Extensions */,
+				C6D62EE229F7010E00B33E9D /* Resources.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C6D62EE429F7280600B33E9D /* MainScreen */ = {
+		C6D62EE429F7280600B33E9D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C6D62EFA29F73CDB00B33E9D /* MainScreen */,
+				C6D62F0F29F74ECC00B33E9D /* DetailScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C6D62EED29F72CC600B33E9D /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F0829F7456500B33E9D /* FlowFactories */,
+				C6D62EEE29F72CCF00B33E9D /* ModuleFactory */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		C6D62EEE29F72CCF00B33E9D /* ModuleFactory */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62EF029F72CEA00B33E9D /* ModuleFactory.swift */,
+				C6D62EF229F72D6300B33E9D /* ModuleFactoryImplementation.swift */,
+			);
+			path = ModuleFactory;
+			sourceTree = "<group>";
+		};
+		C6D62EFA29F73CDB00B33E9D /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C6D630AA29F8AB2500B33E9D /* Elements */,
 				C6D62EDD29F700D400B33E9D /* Model */,
 				C6D62EDE29F700D700B33E9D /* View */,
 				C6D62EDF29F700DA00B33E9D /* ViewModel */,
@@ -184,11 +423,192 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
-		C6D62EE529F7282C00B33E9D /* Coordinator */ = {
+		C6D62EFB29F73CF200B33E9D /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				C6D62EFE29F73D2300B33E9D /* MainFlowNavigation.swift */,
+				C6D62F0D29F74C6000B33E9D /* MainFlowCoordinator.swift */,
 			);
-			path = Coordinator;
+			path = MainFlow;
+			sourceTree = "<group>";
+		};
+		C6D62F0829F7456500B33E9D /* FlowFactories */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F0929F7457400B33E9D /* FlowFactory.swift */,
+				C6D62F0B29F745BE00B33E9D /* FlowFactoryImplementation.swift */,
+			);
+			path = FlowFactories;
+			sourceTree = "<group>";
+		};
+		C6D62F0F29F74ECC00B33E9D /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F1029F74EDD00B33E9D /* DetailViewController.swift */,
+				C6D62F1229F74F1500B33E9D /* DetailViewModel.swift */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		C6D62F1429F7504600B33E9D /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F1729F750A500B33E9D /* DIContainer.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		C6D62F1929F777E800B33E9D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F1A29F777F600B33E9D /* ViewModel.swift */,
+				C6D62F1C29F7783F00B33E9D /* View.swift */,
+				C6D62F1E29F7831E00B33E9D /* FlowCoordinator.swift */,
+				C6D62F2029F7835900B33E9D /* FlowNavigation.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C6D62F2229F8940100B33E9D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F2329F8941000B33E9D /* UIColor+Extension.swift */,
+				C6D630A829F8A6C700B33E9D /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C6D62F2529F89CE800B33E9D /* CustomUIElements */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62F2629F89CF900B33E9D /* CustomLabel.swift */,
+			);
+			path = CustomUIElements;
+			sourceTree = "<group>";
+		};
+		C6D62F2B29F8A02E00B33E9D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62FEA29F8A08900B33E9D /* Asap */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C6D62FEA29F8A08900B33E9D /* Asap */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62FEB29F8A08900B33E9D /* Asap-VariableFont_wdth,wght.ttf */,
+				C6D62FEC29F8A08900B33E9D /* static */,
+				C6D6304729F8A08A00B33E9D /* OFL.txt */,
+				C6D6304829F8A08A00B33E9D /* Asap-Italic-VariableFont_wdth,wght.ttf */,
+				C6D6304929F8A08A00B33E9D /* README.txt */,
+			);
+			path = Asap;
+			sourceTree = "<group>";
+		};
+		C6D62FEC29F8A08900B33E9D /* static */ = {
+			isa = PBXGroup;
+			children = (
+				C6D62FED29F8A08900B33E9D /* Asap_SemiCondensed-MediumItalic.ttf */,
+				C6D62FEE29F8A08900B33E9D /* Asap-ExtraLight.ttf */,
+				C6D62FEF29F8A08900B33E9D /* Asap_SemiCondensed-Italic.ttf */,
+				C6D62FF029F8A08900B33E9D /* Asap-ThinItalic.ttf */,
+				C6D62FF129F8A08900B33E9D /* Asap_Expanded-Light.ttf */,
+				C6D62FF229F8A08900B33E9D /* Asap-Thin.ttf */,
+				C6D62FF329F8A08900B33E9D /* Asap_Condensed-BlackItalic.ttf */,
+				C6D62FF429F8A08900B33E9D /* Asap-ExtraBold.ttf */,
+				C6D62FF529F8A08900B33E9D /* Asap_SemiExpanded-SemiBold.ttf */,
+				C6D62FF629F8A08900B33E9D /* Asap-BoldItalic.ttf */,
+				C6D62FF729F8A08900B33E9D /* Asap_Condensed-MediumItalic.ttf */,
+				C6D62FF829F8A08900B33E9D /* Asap-MediumItalic.ttf */,
+				C6D62FF929F8A08900B33E9D /* Asap_SemiExpanded-ExtraBold.ttf */,
+				C6D62FFA29F8A08900B33E9D /* Asap_SemiCondensed-ExtraLightItalic.ttf */,
+				C6D62FFB29F8A08900B33E9D /* Asap_Condensed-ThinItalic.ttf */,
+				C6D62FFC29F8A08900B33E9D /* Asap_SemiExpanded-MediumItalic.ttf */,
+				C6D62FFD29F8A08900B33E9D /* Asap-BlackItalic.ttf */,
+				C6D62FFE29F8A08900B33E9D /* Asap_Condensed-ExtraLight.ttf */,
+				C6D62FFF29F8A08900B33E9D /* Asap_Expanded-LightItalic.ttf */,
+				C6D6300029F8A08900B33E9D /* Asap_Expanded-Italic.ttf */,
+				C6D6300129F8A08900B33E9D /* Asap-Medium.ttf */,
+				C6D6300229F8A08900B33E9D /* Asap-Bold.ttf */,
+				C6D6300329F8A08900B33E9D /* Asap_SemiExpanded-Regular.ttf */,
+				C6D6300429F8A08900B33E9D /* Asap_Condensed-BoldItalic.ttf */,
+				C6D6300529F8A08900B33E9D /* Asap_Condensed-Black.ttf */,
+				C6D6300629F8A08900B33E9D /* Asap_SemiCondensed-Regular.ttf */,
+				C6D6300729F8A08900B33E9D /* Asap_SemiExpanded-ExtraLightItalic.ttf */,
+				C6D6300829F8A08900B33E9D /* Asap_Condensed-SemiBoldItalic.ttf */,
+				C6D6300929F8A08900B33E9D /* Asap_Expanded-ExtraBold.ttf */,
+				C6D6300A29F8A08900B33E9D /* Asap_Expanded-BoldItalic.ttf */,
+				C6D6300B29F8A08900B33E9D /* Asap-LightItalic.ttf */,
+				C6D6300C29F8A08900B33E9D /* Asap-ExtraLightItalic.ttf */,
+				C6D6300D29F8A08900B33E9D /* Asap_SemiCondensed-Black.ttf */,
+				C6D6300E29F8A08900B33E9D /* Asap_Expanded-ExtraLight.ttf */,
+				C6D6300F29F8A08900B33E9D /* Asap_Expanded-BlackItalic.ttf */,
+				C6D6301029F8A08900B33E9D /* Asap_Expanded-Thin.ttf */,
+				C6D6301129F8A08900B33E9D /* Asap_Expanded-ThinItalic.ttf */,
+				C6D6301229F8A08900B33E9D /* Asap_Expanded-SemiBoldItalic.ttf */,
+				C6D6301329F8A08900B33E9D /* Asap_SemiExpanded-Italic.ttf */,
+				C6D6301429F8A08900B33E9D /* Asap_Condensed-Medium.ttf */,
+				C6D6301529F8A08900B33E9D /* Asap-SemiBoldItalic.ttf */,
+				C6D6301629F8A08900B33E9D /* Asap_SemiCondensed-ExtraBold.ttf */,
+				C6D6301729F8A08900B33E9D /* Asap_SemiExpanded-ExtraBoldItalic.ttf */,
+				C6D6301829F8A08900B33E9D /* Asap_Expanded-Bold.ttf */,
+				C6D6301929F8A08900B33E9D /* Asap_Condensed-LightItalic.ttf */,
+				C6D6301A29F8A08900B33E9D /* Asap_SemiCondensed-ExtraBoldItalic.ttf */,
+				C6D6301B29F8A08900B33E9D /* Asap-Regular.ttf */,
+				C6D6301C29F8A08900B33E9D /* Asap-SemiBold.ttf */,
+				C6D6301D29F8A08900B33E9D /* Asap_SemiExpanded-Light.ttf */,
+				C6D6301E29F8A08900B33E9D /* Asap-Black.ttf */,
+				C6D6301F29F8A08900B33E9D /* Asap-ExtraBoldItalic.ttf */,
+				C6D6302029F8A08900B33E9D /* Asap_SemiCondensed-ThinItalic.ttf */,
+				C6D6302129F8A08900B33E9D /* Asap_Expanded-SemiBold.ttf */,
+				C6D6302229F8A08900B33E9D /* Asap_SemiCondensed-SemiBoldItalic.ttf */,
+				C6D6302329F8A08900B33E9D /* Asap_Condensed-ExtraLightItalic.ttf */,
+				C6D6302429F8A08900B33E9D /* Asap_SemiExpanded-Medium.ttf */,
+				C6D6302529F8A08900B33E9D /* Asap_Condensed-Italic.ttf */,
+				C6D6302629F8A08900B33E9D /* Asap_SemiCondensed-ExtraLight.ttf */,
+				C6D6302729F8A08900B33E9D /* Asap_SemiCondensed-BlackItalic.ttf */,
+				C6D6302829F8A08900B33E9D /* Asap_SemiExpanded-LightItalic.ttf */,
+				C6D6302929F8A08900B33E9D /* Asap_SemiExpanded-Black.ttf */,
+				C6D6302A29F8A08A00B33E9D /* Asap-Light.ttf */,
+				C6D6302B29F8A08A00B33E9D /* Asap_SemiCondensed-BoldItalic.ttf */,
+				C6D6302C29F8A08A00B33E9D /* Asap_SemiCondensed-SemiBold.ttf */,
+				C6D6302D29F8A08A00B33E9D /* Asap_SemiExpanded-Bold.ttf */,
+				C6D6302E29F8A08A00B33E9D /* Asap_Condensed-Thin.ttf */,
+				C6D6302F29F8A08A00B33E9D /* Asap_Condensed-Bold.ttf */,
+				C6D6303029F8A08A00B33E9D /* Asap_SemiExpanded-Thin.ttf */,
+				C6D6303129F8A08A00B33E9D /* Asap_Expanded-MediumItalic.ttf */,
+				C6D6303229F8A08A00B33E9D /* Asap_SemiExpanded-BoldItalic.ttf */,
+				C6D6303329F8A08A00B33E9D /* Asap_Condensed-Regular.ttf */,
+				C6D6303429F8A08A00B33E9D /* Asap_SemiExpanded-ThinItalic.ttf */,
+				C6D6303529F8A08A00B33E9D /* Asap_Condensed-ExtraBold.ttf */,
+				C6D6303629F8A08A00B33E9D /* Asap_Expanded-Regular.ttf */,
+				C6D6303729F8A08A00B33E9D /* Asap_SemiCondensed-Light.ttf */,
+				C6D6303829F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLight.ttf */,
+				C6D6303929F8A08A00B33E9D /* Asap_Condensed-ExtraBoldItalic.ttf */,
+				C6D6303A29F8A08A00B33E9D /* Asap_Condensed-SemiBold.ttf */,
+				C6D6303B29F8A08A00B33E9D /* Asap_SemiCondensed-Bold.ttf */,
+				C6D6303C29F8A08A00B33E9D /* Asap_SemiCondensed-Medium.ttf */,
+				C6D6303D29F8A08A00B33E9D /* Asap_Condensed-Light.ttf */,
+				C6D6303E29F8A08A00B33E9D /* Asap_Expanded-ExtraBoldItalic.ttf */,
+				C6D6303F29F8A08A00B33E9D /* Asap_Expanded-Black.ttf */,
+				C6D6304029F8A08A00B33E9D /* Asap_Expanded-Medium.ttf */,
+				C6D6304129F8A08A00B33E9D /* Asap-Italic.ttf */,
+				C6D6304229F8A08A00B33E9D /* Asap_SemiCondensed-LightItalic.ttf */,
+				C6D6304329F8A08A00B33E9D /* Asap_Expanded-ExtraLightItalic.ttf */,
+				C6D6304429F8A08A00B33E9D /* Asap_SemiCondensed-Thin.ttf */,
+				C6D6304529F8A08A00B33E9D /* Asap_SemiExpanded-BlackItalic.ttf */,
+				C6D6304629F8A08A00B33E9D /* Asap_SemiExpanded-SemiBoldItalic.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		C6D630AA29F8AB2500B33E9D /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C6D630AB29F8AB4100B33E9D /* TemperatureView.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,11 +618,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6D62ED429F6FF9800B33E9D /* Build configuration list for PBXNativeTarget "Neobis_iOS_WeatherApp" */;
 			buildPhases = (
-				5F7F2054946EC9068A0A8BFF /* [CP] Check Pods Manifest.lock */,
+				D6653E57C86DBD0C25F44ABA /* [CP] Check Pods Manifest.lock */,
 				C6D62EBC29F6FF9700B33E9D /* Sources */,
 				C6D62EBD29F6FF9700B33E9D /* Frameworks */,
 				C6D62EBE29F6FF9700B33E9D /* Resources */,
-				48035BF8DE638E220AFEEE6E /* [CP] Embed Pods Frameworks */,
+				CB9C621B80383E2ACDA90B9B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,15 +671,109 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D6308929F8A08A00B33E9D /* Asap_SemiCondensed-BoldItalic.ttf in Resources */,
+				C6D6304B29F8A08A00B33E9D /* Asap_SemiCondensed-MediumItalic.ttf in Resources */,
+				C6D6305D29F8A08A00B33E9D /* Asap_Expanded-LightItalic.ttf in Resources */,
+				C6D6309F29F8A08A00B33E9D /* Asap-Italic.ttf in Resources */,
+				C6D6305629F8A08A00B33E9D /* Asap-MediumItalic.ttf in Resources */,
+				C6D6309029F8A08A00B33E9D /* Asap_SemiExpanded-BoldItalic.ttf in Resources */,
+				C6D6305829F8A08A00B33E9D /* Asap_SemiCondensed-ExtraLightItalic.ttf in Resources */,
+				C6D6306D29F8A08A00B33E9D /* Asap_Expanded-BlackItalic.ttf in Resources */,
+				C6D6307C29F8A08A00B33E9D /* Asap-Black.ttf in Resources */,
+				C6D6309529F8A08A00B33E9D /* Asap_SemiCondensed-Light.ttf in Resources */,
+				C6D630A129F8A08A00B33E9D /* Asap_Expanded-ExtraLightItalic.ttf in Resources */,
+				C6D6309129F8A08A00B33E9D /* Asap_Condensed-Regular.ttf in Resources */,
+				C6D6307029F8A08A00B33E9D /* Asap_Expanded-SemiBoldItalic.ttf in Resources */,
+				C6D6307129F8A08A00B33E9D /* Asap_SemiExpanded-Italic.ttf in Resources */,
 				C6D62ED029F6FF9800B33E9D /* LaunchScreen.storyboard in Resources */,
+				C6D6306A29F8A08A00B33E9D /* Asap-ExtraLightItalic.ttf in Resources */,
+				C6D6309329F8A08A00B33E9D /* Asap_Condensed-ExtraBold.ttf in Resources */,
+				C6D6309E29F8A08A00B33E9D /* Asap_Expanded-Medium.ttf in Resources */,
+				C6D6306429F8A08A00B33E9D /* Asap_SemiCondensed-Regular.ttf in Resources */,
+				C6D630A629F8A08A00B33E9D /* Asap-Italic-VariableFont_wdth,wght.ttf in Resources */,
+				C6D6307929F8A08A00B33E9D /* Asap-Regular.ttf in Resources */,
+				C6D630A529F8A08A00B33E9D /* OFL.txt in Resources */,
+				C6D6309729F8A08A00B33E9D /* Asap_Condensed-ExtraBoldItalic.ttf in Resources */,
+				C6D6305929F8A08A00B33E9D /* Asap_Condensed-ThinItalic.ttf in Resources */,
+				C6D6309C29F8A08A00B33E9D /* Asap_Expanded-ExtraBoldItalic.ttf in Resources */,
+				C6D6307A29F8A08A00B33E9D /* Asap-SemiBold.ttf in Resources */,
+				C6D6307229F8A08A00B33E9D /* Asap_Condensed-Medium.ttf in Resources */,
+				C6D6306629F8A08A00B33E9D /* Asap_Condensed-SemiBoldItalic.ttf in Resources */,
+				C6D6308629F8A08A00B33E9D /* Asap_SemiExpanded-LightItalic.ttf in Resources */,
+				C6D6306E29F8A08A00B33E9D /* Asap_Expanded-Thin.ttf in Resources */,
+				C6D6309B29F8A08A00B33E9D /* Asap_Condensed-Light.ttf in Resources */,
+				C6D6308F29F8A08A00B33E9D /* Asap_Expanded-MediumItalic.ttf in Resources */,
+				C6D6308829F8A08A00B33E9D /* Asap-Light.ttf in Resources */,
+				C6D6309D29F8A08A00B33E9D /* Asap_Expanded-Black.ttf in Resources */,
+				C6D6308E29F8A08A00B33E9D /* Asap_SemiExpanded-Thin.ttf in Resources */,
+				C6D6308029F8A08A00B33E9D /* Asap_SemiCondensed-SemiBoldItalic.ttf in Resources */,
+				C6D6306929F8A08A00B33E9D /* Asap-LightItalic.ttf in Resources */,
+				C6D6305E29F8A08A00B33E9D /* Asap_Expanded-Italic.ttf in Resources */,
+				C6D6305B29F8A08A00B33E9D /* Asap-BlackItalic.ttf in Resources */,
+				C6D6307B29F8A08A00B33E9D /* Asap_SemiExpanded-Light.ttf in Resources */,
+				C6D6309929F8A08A00B33E9D /* Asap_SemiCondensed-Bold.ttf in Resources */,
+				C6D6305029F8A08A00B33E9D /* Asap-Thin.ttf in Resources */,
+				C6D630A429F8A08A00B33E9D /* Asap_SemiExpanded-SemiBoldItalic.ttf in Resources */,
+				C6D6306229F8A08A00B33E9D /* Asap_Condensed-BoldItalic.ttf in Resources */,
+				C6D6305129F8A08A00B33E9D /* Asap_Condensed-BlackItalic.ttf in Resources */,
+				C6D6305529F8A08A00B33E9D /* Asap_Condensed-MediumItalic.ttf in Resources */,
 				C6D62ECD29F6FF9800B33E9D /* Assets.xcassets in Resources */,
+				C6D6308129F8A08A00B33E9D /* Asap_Condensed-ExtraLightItalic.ttf in Resources */,
+				C6D6306F29F8A08A00B33E9D /* Asap_Expanded-ThinItalic.ttf in Resources */,
+				C6D6306829F8A08A00B33E9D /* Asap_Expanded-BoldItalic.ttf in Resources */,
+				C6D6305329F8A08A00B33E9D /* Asap_SemiExpanded-SemiBold.ttf in Resources */,
+				C6D6308D29F8A08A00B33E9D /* Asap_Condensed-Bold.ttf in Resources */,
+				C6D6305729F8A08A00B33E9D /* Asap_SemiExpanded-ExtraBold.ttf in Resources */,
+				C6D6307E29F8A08A00B33E9D /* Asap_SemiCondensed-ThinItalic.ttf in Resources */,
+				C6D6306529F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLightItalic.ttf in Resources */,
+				C6D6309829F8A08A00B33E9D /* Asap_Condensed-SemiBold.ttf in Resources */,
+				C6D630A229F8A08A00B33E9D /* Asap_SemiCondensed-Thin.ttf in Resources */,
+				C6D6304C29F8A08A00B33E9D /* Asap-ExtraLight.ttf in Resources */,
+				C6D6307729F8A08A00B33E9D /* Asap_Condensed-LightItalic.ttf in Resources */,
+				C6D630A329F8A08A00B33E9D /* Asap_SemiExpanded-BlackItalic.ttf in Resources */,
+				C6D6304E29F8A08A00B33E9D /* Asap-ThinItalic.ttf in Resources */,
+				C6D6306329F8A08A00B33E9D /* Asap_Condensed-Black.ttf in Resources */,
+				C6D6304F29F8A08A00B33E9D /* Asap_Expanded-Light.ttf in Resources */,
+				C6D6308329F8A08A00B33E9D /* Asap_Condensed-Italic.ttf in Resources */,
+				C6D6307629F8A08A00B33E9D /* Asap_Expanded-Bold.ttf in Resources */,
+				C6D6309429F8A08A00B33E9D /* Asap_Expanded-Regular.ttf in Resources */,
+				C6D6309229F8A08A00B33E9D /* Asap_SemiExpanded-ThinItalic.ttf in Resources */,
+				C6D6308229F8A08A00B33E9D /* Asap_SemiExpanded-Medium.ttf in Resources */,
+				C6D6309A29F8A08A00B33E9D /* Asap_SemiCondensed-Medium.ttf in Resources */,
+				C6D6306729F8A08A00B33E9D /* Asap_Expanded-ExtraBold.ttf in Resources */,
+				C6D630A729F8A08A00B33E9D /* README.txt in Resources */,
+				C6D6308C29F8A08A00B33E9D /* Asap_Condensed-Thin.ttf in Resources */,
+				C6D6306129F8A08A00B33E9D /* Asap_SemiExpanded-Regular.ttf in Resources */,
+				C6D6307D29F8A08A00B33E9D /* Asap-ExtraBoldItalic.ttf in Resources */,
+				C6D630A029F8A08A00B33E9D /* Asap_SemiCondensed-LightItalic.ttf in Resources */,
+				C6D6304A29F8A08A00B33E9D /* Asap-VariableFont_wdth,wght.ttf in Resources */,
+				C6D6306C29F8A08A00B33E9D /* Asap_Expanded-ExtraLight.ttf in Resources */,
+				C6D6305429F8A08A00B33E9D /* Asap-BoldItalic.ttf in Resources */,
+				C6D6305C29F8A08A00B33E9D /* Asap_Condensed-ExtraLight.ttf in Resources */,
+				C6D6305A29F8A08A00B33E9D /* Asap_SemiExpanded-MediumItalic.ttf in Resources */,
+				C6D6306B29F8A08A00B33E9D /* Asap_SemiCondensed-Black.ttf in Resources */,
+				C6D6308529F8A08A00B33E9D /* Asap_SemiCondensed-BlackItalic.ttf in Resources */,
+				C6D6307F29F8A08A00B33E9D /* Asap_Expanded-SemiBold.ttf in Resources */,
+				C6D6305229F8A08A00B33E9D /* Asap-ExtraBold.ttf in Resources */,
+				C6D6308429F8A08A00B33E9D /* Asap_SemiCondensed-ExtraLight.ttf in Resources */,
+				C6D6307829F8A08A00B33E9D /* Asap_SemiCondensed-ExtraBoldItalic.ttf in Resources */,
+				C6D6308A29F8A08A00B33E9D /* Asap_SemiCondensed-SemiBold.ttf in Resources */,
+				C6D6306029F8A08A00B33E9D /* Asap-Bold.ttf in Resources */,
+				C6D6309629F8A08A00B33E9D /* Asap_SemiExpanded-ExtraLight.ttf in Resources */,
+				C6D6305F29F8A08A00B33E9D /* Asap-Medium.ttf in Resources */,
+				C6D6307329F8A08A00B33E9D /* Asap-SemiBoldItalic.ttf in Resources */,
+				C6D6308B29F8A08A00B33E9D /* Asap_SemiExpanded-Bold.ttf in Resources */,
+				C6D6308729F8A08A00B33E9D /* Asap_SemiExpanded-Black.ttf in Resources */,
+				C6D6304D29F8A08A00B33E9D /* Asap_SemiCondensed-Italic.ttf in Resources */,
+				C6D6307529F8A08A00B33E9D /* Asap_SemiExpanded-ExtraBoldItalic.ttf in Resources */,
+				C6D6307429F8A08A00B33E9D /* Asap_SemiCondensed-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		48035BF8DE638E220AFEEE6E /* [CP] Embed Pods Frameworks */ = {
+		CB9C621B80383E2ACDA90B9B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -276,7 +790,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Neobis_iOS_WeatherApp/Pods-Neobis_iOS_WeatherApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5F7F2054946EC9068A0A8BFF /* [CP] Check Pods Manifest.lock */ = {
+		D6653E57C86DBD0C25F44ABA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,9 +819,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D62F1D29F7783F00B33E9D /* View.swift in Sources */,
+				C6D62F2429F8941000B33E9D /* UIColor+Extension.swift in Sources */,
+				C6D62F2129F7835900B33E9D /* FlowNavigation.swift in Sources */,
+				C6D62EF929F73C4E00B33E9D /* MainScreenViewModel.swift in Sources */,
+				C6D62F2729F89CF900B33E9D /* CustomLabel.swift in Sources */,
+				C6D62F1329F74F1500B33E9D /* DetailViewModel.swift in Sources */,
+				C6D62F0E29F74C6000B33E9D /* MainFlowCoordinator.swift in Sources */,
+				C6D62EF129F72CEA00B33E9D /* ModuleFactory.swift in Sources */,
 				C6D62EC829F6FF9700B33E9D /* MainScreenViewController.swift in Sources */,
-				C6D62EE729F7284300B33E9D /* MainScreenViewModel.swift in Sources */,
-				C6D62EE329F7010E00B33E9D /* Constaints.swift in Sources */,
+				C6D62F0C29F745BE00B33E9D /* FlowFactoryImplementation.swift in Sources */,
+				C6D62F1129F74EDD00B33E9D /* DetailViewController.swift in Sources */,
+				C6D630AC29F8AB4100B33E9D /* TemperatureView.swift in Sources */,
+				C6D630A929F8A6C700B33E9D /* UIViewController+Extension.swift in Sources */,
+				C6D62F1829F750A500B33E9D /* DIContainer.swift in Sources */,
+				C6D62EE329F7010E00B33E9D /* Resources.swift in Sources */,
+				C6D62F1F29F7831E00B33E9D /* FlowCoordinator.swift in Sources */,
+				C6D62EF329F72D6300B33E9D /* ModuleFactoryImplementation.swift in Sources */,
+				C6D62F1B29F777F600B33E9D /* ViewModel.swift in Sources */,
+				C6D62EFF29F73D2300B33E9D /* MainFlowNavigation.swift in Sources */,
+				C6D62F0A29F7457400B33E9D /* FlowFactory.swift in Sources */,
 				C6D62EC429F6FF9700B33E9D /* AppDelegate.swift in Sources */,
 				C6D62EC629F6FF9700B33E9D /* SceneDelegate.swift in Sources */,
 			);
@@ -377,7 +908,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -431,7 +962,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -443,7 +974,7 @@
 		};
 		C6D62ED529F6FF9800B33E9D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28C77E7C21B0F480C6963124 /* Pods-Neobis_iOS_WeatherApp.debug.xcconfig */;
+			baseConfigurationReference = 4F09ACABF030B93E4F8218AB /* Pods-Neobis_iOS_WeatherApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -470,7 +1001,7 @@
 		};
 		C6D62ED629F6FF9800B33E9D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BE080AE3E3EC77889E11BBD /* Pods-Neobis_iOS_WeatherApp.release.xcconfig */;
+			baseConfigurationReference = B2A9331D6749C75E8B1441A6 /* Pods-Neobis_iOS_WeatherApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
