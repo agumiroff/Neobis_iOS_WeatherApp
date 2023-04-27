@@ -12,13 +12,14 @@ class MainFlowNavigation: FlowNavigation {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
+        appearance.configureWithDefaultBackground()
         UINavigationBar.appearance().standardAppearance = appearance
         isNavigationBarHidden = false
         // navigation settings
     }
     
-   
+    func popView() {
+        
+    }
 }

@@ -10,17 +10,18 @@ import UIKit
 
 class ModuleFactoryImplementation: ModuleFactory {
     
-    func buildMainScreen() -> (UIViewController, MainScreenViewModel) {
+    func buildMainScreen(coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
+        let viewModel = MainScreenViewModel()
+        viewModel.coordinator = coordinator
         let view = MainScreenViewController()
-        let viewModel = MainScreenViewModel(view: view)
         view.viewModel = viewModel
-        return (view, viewModel)
+        return view
     }
     
-    func buildDetailScreen() -> (UIViewController, DetailViewModel) {
+    func buildDetailScreen(coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
+        _ = DetailViewModel()
         let view = DetailViewController()
-        let viewModel = DetailViewModel(view: view)
-        view.viewModel = viewModel
-        return (view, viewModel)
+        
+        return view
     }
 }

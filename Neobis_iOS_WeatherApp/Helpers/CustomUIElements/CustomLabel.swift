@@ -15,6 +15,7 @@ class CustomLabel: UILabel {
         
         self.text = text
         self.font = UIFont(name: font, size: size)
+        self.textAlignment = .center
         textColor = color
     }
     

@@ -7,15 +7,9 @@
 
 import Foundation
 
-protocol DetailViewModelProtocol {
-    func viewDidLoad()
-}
-
-class DetailViewModel: ViewModel<DetailViewController>, DetailViewModelProtocol {
-    
-    var text = ""
+class DetailViewModel {
     
     func viewDidLoad() {
-        view?.label.text = self.text
+        
     }
 }

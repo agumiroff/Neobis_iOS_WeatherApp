@@ -8,32 +8,33 @@
 import Foundation
 import UIKit
 
-class MainFlowCoordinator: FlowCoordinator<MainFlowNavigation> {
+class MainFlowCoordinator: FlowCoordinator<FlowNavigation> {
+    
     private var module: ModuleFactory
     
-    init(module: ModuleFactory, navigation: MainFlowNavigation) {
-        self.module = module
+    init(moduleFactory: ModuleFactory, navigation: FlowNavigation) {
+        self.module = moduleFactory
         super.init(navigation: navigation)
     }
     
     override func start() {
         super.start()
-        navigation?.pushViewController(mainScreen(), animated: false)
+        showMainScreen()
     }
     
-    private func mainScreen() -> UIViewController {
-        let (vc, viewModel) = module.buildMainScreen()
-        
-        viewModel.didEnterCity = { str in vc.navigationController?.pushViewController(self.detailScreen(text: str), animated: true)}
-        
-        return vc
+}
+
+extension MainFlowCoordinator: MainFlowCoordinatorProtocol {
+    
+    //    func finish
+    //    showMainScreen
+    func showMainScreen() {
+        let vc = module.buildMainScreen(coordinator: self)
+        navigation?.pushViewController(vc, animated: false)
     }
     
-    private func detailScreen(text: String) -> UIViewController {
-        let (vc, viewModel) = module.buildDetailScreen()
-        
-        viewModel.text = text
-        
-        return vc
+    func showDetailScreen() {
+        let vc = module.buildDetailScreen(coordinator: self)
+        navigation?.pushViewController(vc, animated: false)
     }
 }

@@ -8,10 +8,7 @@
 import Foundation
 import UIKit
 
-protocol View: UIViewController {
-    
+protocol ViewController {
     associatedtype ViewModelType
     var viewModel: ViewModelType? { get set }
-    
-    func updateUI()
 }

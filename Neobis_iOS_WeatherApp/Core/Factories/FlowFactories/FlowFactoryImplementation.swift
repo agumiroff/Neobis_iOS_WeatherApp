@@ -12,7 +12,8 @@ class FlowFactoryImplementation: FlowFactory {
     
     func startMainFlow() -> (UIViewController) {
         let navigation = MainFlowNavigation()
-        _ = MainFlowCoordinator(module: DIContainer.standart.resolve(), navigation: navigation)
+        _ = MainFlowCoordinator(moduleFactory: DIContainer.standart.resolve(), navigation: navigation)
+        
         return navigation
     }
 }

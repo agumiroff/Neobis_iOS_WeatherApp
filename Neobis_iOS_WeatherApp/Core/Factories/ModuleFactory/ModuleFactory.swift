@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 
 protocol ModuleFactory {
-    func buildMainScreen() -> (UIViewController, MainScreenViewModel)
-    func buildDetailScreen() -> (UIViewController, DetailViewModel)
+    func buildMainScreen(coordinator: MainFlowCoordinatorProtocol) -> (UIViewController)
+    func buildDetailScreen(coordinator: MainFlowCoordinatorProtocol) -> UIViewController
 }

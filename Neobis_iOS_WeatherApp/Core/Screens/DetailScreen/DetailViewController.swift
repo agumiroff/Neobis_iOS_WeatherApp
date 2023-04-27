@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class DetailViewController: UIViewController, View {
+class DetailViewController: UIViewController, ViewController {
     
+    typealias ViewModelType = DetailViewModel
+    var viewModel: ViewModelType?
     
-    
-    var viewModel: DetailViewModel?
     
     let label: UILabel = {
         let label = UILabel()
@@ -22,8 +22,6 @@ class DetailViewController: UIViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        
-        viewModel?.viewDidLoad()
         
         setupViews()
     }

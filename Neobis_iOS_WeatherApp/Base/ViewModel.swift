@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import RxSwift
 
-class ViewModel<V: View> {
+
+class ViewModel<CoordinatorType> {
     
-    weak var view: V?
+    var coordinator: CoordinatorType?
+    var state: State = .initial
     
-    init(view: V) {
-        self.view = view
-    }
 }
+
+
+

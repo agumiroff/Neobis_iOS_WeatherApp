@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let mainFlowFactory: FlowFactory = DIContainer.standart.resolve()
-        let vc = mainFlowFactory.startMainFlow()
+        let factory: FlowFactory = DIContainer.standart.resolve()
+        let vc = factory.startMainFlow() //Попробовать сделать структуру со статическими методами
         
         Resources.screenWidth = windowScene.screen.bounds.width
         Resources.screenHeight = windowScene.screen.bounds.height

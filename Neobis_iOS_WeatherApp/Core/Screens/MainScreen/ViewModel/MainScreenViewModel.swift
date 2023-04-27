@@ -6,42 +6,25 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
-protocol MainScreenViewModelProtocol {
+class MainScreenViewModel: ViewModel<MainFlowCoordinatorProtocol> {
     
-    var didEnterCity: ((_ data: String) -> Void)? { get set }
-    var mainState: MainState { get }
-    func viewDidRequestGoNext(name: String)
-}
-
-//MARK: - View Model
-
-class MainScreenViewModel: ViewModel<MainScreenViewController>, MainScreenViewModelProtocol {
+    var state1: Observable<State> = .just(.initial)
     
-    var mainState: MainState = .initial
-    
-    var didEnterCity: ((String) -> Void)?
-}
-
-//MARK: - View methods
-
-extension MainScreenViewModel {
-    
-    func viewDidLoad() {
-        
+    func searchDidTapped() {
+        state1 = .just(.loading)
     }
     
-    func viewDidRequestGoNext(name: String) {
-        didEnterCity?(name)
-    }
+    func configure() {
     
+    }
 }
 
-enum MainState {
-    
-    case initial
-    case loading
-    case success
-    case failure
-    
-}
+    enum State {
+        case initial
+        case loading
+        case success
+        case failure
+    }

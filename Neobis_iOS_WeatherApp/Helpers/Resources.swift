@@ -24,6 +24,9 @@ enum Resources {
     
     enum Constraints {
         
+        static let searchLogoSize = getSize(side: .height, size: 30)
+        static let searchLogoRight = getSize(side: .width, size: 25)
+        
         static let dateTop = getSize(side: .height, size: 86)
         
         static let cloudImageSide = getSize(side: .height, size: 75)
@@ -31,10 +34,16 @@ enum Resources {
         static let temperatureViewTop = getSize(side: .height, size: 18)
         static let temperatureViewLeft = getSize(side: .width, size: 85)
         
-        static let windStatusTop = getSize(side: .height, size: 31)
-        static let windStatusLeft = getSize(side: .width, size: 60)
+        static let attTitleTop = getSize(side: .height, size: 31)
         
-        static let windSpeedTop = getSize(side: .height, size: 8)
+        static let attValueTop = getSize(side: .height, size: 8)
+        
+        static let weekDayRadius = getSize(side: .height, size: 20)
+        static let weekDaySide = getSize(side: .height, size: 75)
+        
+        static let fiveDaysRadius = getSize(side: .height, size: 60)
+        
+        static let searchViewRadius = getSize(side: .height, size: 60)
     }
     
     enum Fonts {
