@@ -12,15 +12,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private var flowFactory: FlowFactory!
     private var moduleFactory: ModuleFactory!
+    private var networkService: NetworkService!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         flowFactory = FlowFactoryImplementation()
         moduleFactory = ModuleFactoryImplementation()
+        networkService = NetworkServiceImplementation()
         
         DIContainer.standart.register(flowFactory!)
         DIContainer.standart.register(moduleFactory!)
+        DIContainer.standart.register(networkService)
         
         return true
     }

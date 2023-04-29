@@ -6,9 +6,10 @@
 //
 
 import Foundation
-import UIKit
 
-protocol ViewController {
+protocol ViewController: AnyObject {
+    
     associatedtype ViewModelType
     var viewModel: ViewModelType? { get set }
+    
 }

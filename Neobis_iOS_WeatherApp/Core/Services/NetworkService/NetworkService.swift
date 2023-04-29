@@ -7,27 +7,11 @@
 
 import Foundation
 
-fileprivate enum ApiCall {
-    static let key = "10c23c3870e650a2d46ef9a8222dc0de"
-    static let limit = 1
-    static let basicCall = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=\(key)"
+
+protocol NetworkService: AnyObject {
+    
+    func getCoordinatesByLocationName(location: String, completion: @escaping (Result<[LocationModel], Error>) -> Void)
+    
+    func getWeatherData(location: LocationModel, completion: @escaping (WeatherModel) -> Void)
 }
 
-protocol NetworkServiceProtocol {
-    
-    func getCoordinatesByLocationName(location: String)
-    
-    func getWeatherData(location: LocationModel)
-}
-
-class NetworkService: NetworkServiceProtocol {
-    
-    func getCoordinatesByLocationName(location: String) {
-        let url = "http://api.openweathermap.org/geo/1.0/direct?q=\(location)&limit=\(ApiCall.limit)&appid=\(ApiCall.key)"
-    }
-    
-    func getWeatherData(location: LocationModel) {
-        let url = "https://api.openweathermap.org/data/2.5/weather?lat=\(location.latitude)&lon=\(location.longitude)&appid=\(ApiCall.key)"
-    }
-        
-}

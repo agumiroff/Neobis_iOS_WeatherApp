@@ -6,15 +6,11 @@
 //
 
 import Foundation
-import RxSwift
 
-
-class ViewModel<CoordinatorType> {
+protocol ViewModel: AnyObject {
     
-    var coordinator: CoordinatorType?
-    var state: State = .initial
+    associatedtype CoordinatorType
+    var coordinator: CoordinatorType? { get set }
     
 }
-
-
 

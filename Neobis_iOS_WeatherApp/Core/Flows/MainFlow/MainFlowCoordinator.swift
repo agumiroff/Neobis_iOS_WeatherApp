@@ -1,40 +1,19 @@
 //
-//  MainFlowCoordinator.swift
+//  MainCoordinatorProtocol.swift
 //  Neobis_iOS_WeatherApp
 //
-//  Created by G G on 25.04.2023.
+//  Created by G G on 27.04.2023.
 //
 
 import Foundation
-import UIKit
 
-class MainFlowCoordinator: FlowCoordinator<FlowNavigation> {
+protocol MainFlowCoordinator: Coordinator {
     
-    private var module: ModuleFactory
+    func showMainScreen(data: WeatherModel, location: LocationModel)
     
-    init(moduleFactory: ModuleFactory, navigation: FlowNavigation) {
-        self.module = moduleFactory
-        super.init(navigation: navigation)
-    }
+    func showSearchScreen()
     
-    override func start() {
-        super.start()
-        showMainScreen()
-    }
+    func showLoader()
     
-}
-
-extension MainFlowCoordinator: MainFlowCoordinatorProtocol {
-    
-    //    func finish
-    //    showMainScreen
-    func showMainScreen() {
-        let vc = module.buildMainScreen(coordinator: self)
-        navigation?.pushViewController(vc, animated: false)
-    }
-    
-    func showDetailScreen() {
-        let vc = module.buildDetailScreen(coordinator: self)
-        navigation?.pushViewController(vc, animated: false)
-    }
+    func pop()
 }

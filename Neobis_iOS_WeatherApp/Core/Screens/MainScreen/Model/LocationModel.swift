@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct LocationModel {
+struct LocationModel: Codable {
     let name: String
-    let longitude: Double
-    let latitude: Double
+    let lat: Double
+    let lon: Double
+    let country: String
 }

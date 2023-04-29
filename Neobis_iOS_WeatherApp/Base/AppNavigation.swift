@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol FlowNavigationProtocol: AnyObject {
-    var coordinator: FlowCoordinatorProtocol? { get set }
+protocol Navigation: AnyObject {
+    var coordinator: Coordinator? { get set }
 }
 
-class FlowNavigation: UINavigationController, FlowNavigationProtocol {
+class AppNavigation: UINavigationController, Navigation {
     
-    var coordinator: FlowCoordinatorProtocol?
+    var coordinator: Coordinator?
     
     private var isFlowStarted = false
     

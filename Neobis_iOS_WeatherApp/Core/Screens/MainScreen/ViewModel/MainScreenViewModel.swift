@@ -1,30 +1,27 @@
 //
-//  MainScreenViewModel.swift
+//  MainScreenViewModel1.swift
 //  Neobis_iOS_WeatherApp
 //
-//  Created by G G on 25.04.2023.
+//  Created by G G on 28.04.2023.
 //
 
 import Foundation
 import RxCocoa
 import RxSwift
 
-class MainScreenViewModel: ViewModel<MainFlowCoordinatorProtocol> {
+protocol MainScreenViewModel: AnyObject {
     
-    var state1: Observable<State> = .just(.initial)
+    var state: BehaviorRelay<State> { get }
     
-    func searchDidTapped() {
-        state1 = .just(.loading)
-    }
+    var weatherData: WeatherModel? { get }
     
-    func configure() {
+    func searchDidTap()
     
-    }
+    func setState(state: State)
+    
+    func viewAskedForTransition()
+    
+    func viewAskedForLoading()
+    
+    func searchCity(name: String)
 }
-
-    enum State {
-        case initial
-        case loading
-        case success
-        case failure
-    }

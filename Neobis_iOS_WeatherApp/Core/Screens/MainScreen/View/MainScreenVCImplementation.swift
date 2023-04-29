@@ -10,19 +10,22 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class MainScreenViewController: UIViewController, ViewController {
+class MainScreenViewController: UIViewController, MainScreenVC {
     
     typealias ViewModelType = MainScreenViewModel
+    var viewModel: (any ViewModelType)?
     
-    var viewModel: ViewModelType?
+    private var location = LocationModel(name: "", lat: 0.0, lon: 0.0, country: "")
     
-    var state: State = .initial
+    private var loaderRadius = 0.0
+    
+    private let disposeBag = DisposeBag()
     
     private let searchLogo: UIButton = {
-        let iv = UIButton()
-        iv.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        iv.tintColor = .black
-        return iv
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = .black
+        return button
     }()
     
     private let temperatureView = TemperatureView()
@@ -72,28 +75,47 @@ class MainScreenViewController: UIViewController, ViewController {
     private let airPressureValue = CustomLabel(font: Resources.Fonts.Name.regular,
                                                size: Resources.Fonts.Size.title1,
                                                text: "998 mb", color: .white)
+    
+    private let loadingView = LoadingView()
+    
     //MARK: - ViewDidLoad
+    
+    init(location: LocationModel) {
+        self.location = location
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.isToolbarHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel?.state1
-            .asObservable()
-            .subscribe(onNext: { state in
-                print(state)
-            })
-        
-        updateUI()
+        bindViewModel()
         setupGradient()
-        navigationBarSetup()
-        
+        setupUI()
     }
-    
-    private func setupViews() {
+        
+    private func setupUI() {
         
         view.addSubViews(subViews: [
-            dateLabel, city, country, temperatureView, windStatus, windSpeed, visibility, visibilityRange, humidity, humidityValue, airPressure, airPressureValue, fiveDaysView
+            searchLogo, dateLabel, city, country, temperatureView, windStatus, windSpeed, visibility, visibilityRange, humidity, humidityValue, airPressure, airPressureValue, fiveDaysView,
         ])
+        
+        searchLogo.addTarget(self, action: #selector(searchCity), for: .touchUpInside)
+        searchLogo.snp.makeConstraints { make in
+            make.top.right.equalToSuperview()
+                .inset(30)
+            make.size.equalTo(75)
+        }
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -101,16 +123,19 @@ class MainScreenViewController: UIViewController, ViewController {
                 .offset(10)
         }
         
+        city.text = location.name
         city.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(dateLabel.snp.bottom)
         }
         
+        country.text = location.country
         country.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(city.snp.bottom)
         }
         
+        temperatureView.temperature.text = String(viewModel?.weatherData?.main["temp"] ?? 0.0)
         temperatureView.layer.cornerRadius = self.temperatureView.bounds.width / 2
         temperatureView.snp.makeConstraints { make in
             make.top.equalTo(country.snp.bottom)
@@ -127,6 +152,7 @@ class MainScreenViewController: UIViewController, ViewController {
             make.right.equalTo(view.snp.centerX)
         }
         
+        windSpeed.text = String(viewModel?.weatherData?.wind["speed"] ?? 0.0)
         windSpeed.snp.makeConstraints { make in
             make.top.equalTo(windStatus.snp.bottom)
                 .offset(Resources.Constraints.attValueTop)
@@ -140,6 +166,7 @@ class MainScreenViewController: UIViewController, ViewController {
             make.left.equalTo(view.snp.centerX)
         }
         
+        visibilityRange.text = String(viewModel?.weatherData?.visibility ?? 0.0)
         visibilityRange.snp.makeConstraints { make in
             make.top.equalTo(visibility.snp.bottom)
                 .offset(Resources.Constraints.attValueTop)
@@ -151,6 +178,7 @@ class MainScreenViewController: UIViewController, ViewController {
             make.top.equalTo(windSpeed.snp.bottom).offset(20)
         }
         
+        humidityValue.text = String(viewModel?.weatherData?.main["humidity"] ?? 0.0)
         humidityValue.snp.makeConstraints { make in
             make.top.equalTo(humidity.snp.bottom)
                 .offset(Resources.Constraints.attValueTop)
@@ -162,6 +190,7 @@ class MainScreenViewController: UIViewController, ViewController {
             make.top.equalTo(visibilityRange.snp.bottom).offset(20)
         }
         
+        airPressureValue.text = String(viewModel?.weatherData?.main["pressure"] ?? 0.0)
         airPressureValue.snp.makeConstraints { make in
             make.top.equalTo(airPressure.snp.bottom)
                 .offset(Resources.Constraints.attValueTop)
@@ -173,18 +202,15 @@ class MainScreenViewController: UIViewController, ViewController {
                 .offset(30)
             make.bottom.left.right.equalToSuperview()
         }
+        
     }
     
-    private func navigationBarSetup() {
-        navigationController?.navigationBar.addSubview(searchLogo)
-        searchLogo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchCity)))
-        searchLogo.isUserInteractionEnabled = true
-        
-        searchLogo.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(Resources.Constraints.searchLogoRight)
-            make.top.equalToSuperview()
-            make.width.height.equalTo(Resources.Constraints.searchLogoSize)
-        }
+    private func bindViewModel() {
+        viewModel?.state
+            .subscribe(onNext: { state in
+                self.buildUI(state: state)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupGradient() {
@@ -197,29 +223,37 @@ class MainScreenViewController: UIViewController, ViewController {
         view.layer.insertSublayer(gradient, at: 0)
     }
     
-    func updateUI() {
-        switch self.state {
+    private func buildUI(state: State) {
+        switch state {
         case .initial:
-            setupViews()
+            break
         case .loading:
-            let loader = UIProgressView()
-            view.addSubview(loader)
-            loader.snp.makeConstraints { make in
-                make.centerX.centerY.equalToSuperview()
-            }
-            view.subviews.map { subView in
-                subView.isHidden = true
-            }
+            print("loading")
+            presentScreen(screen: LoadingScreen())
+            break
         case .success:
             break
         case .failure:
+            presentScreen(screen: ErrorScreen())
             break
         }
-   
     }
     
-    @objc func searchCity() {
-        viewModel?.state1 = .just(.loading)
+    private func updateUI(with data: WeatherModel) {
+        
+    }
+    
+    private func presentScreen(screen: UIViewController) {
+        dismiss(animated: false)
+        screen.modalPresentationStyle = .overCurrentContext
+        present(screen, animated: false)
+    }
+    
+    @objc private func searchCity() {
+        viewModel?.searchCity(name: "")
+    }
+    
+    @objc func loading() {
+        
     }
 }
-

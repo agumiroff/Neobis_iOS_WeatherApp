@@ -10,17 +10,28 @@ import UIKit
 
 class ModuleFactoryImplementation: ModuleFactory {
     
-    func buildMainScreen(coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
-        let viewModel = MainScreenViewModel()
+    func buildMainScreen(coordinator: MainFlowCoordinator,
+                         data: WeatherModel,
+                         location: LocationModel) -> UIViewController {
+        
+        let viewModel = MainScreenViewModelImplementation()
+        viewModel.weatherData = data
         viewModel.coordinator = coordinator
-        let view = MainScreenViewController()
+        
+        let view = MainScreenViewController(location: location)
         view.viewModel = viewModel
+        
         return view
     }
     
-    func buildDetailScreen(coordinator: MainFlowCoordinatorProtocol) -> UIViewController {
-        _ = DetailViewModel()
-        let view = DetailViewController()
+    func buildDetailScreen(coordinator: MainFlowCoordinator) -> UIViewController {
+        
+        let viewModel = SearchScreenViewModelImplementation()
+        viewModel.coordinator = coordinator
+        viewModel.networkService = DIContainer.standart.resolve()
+        
+        let view = SearchScreenVCImplementation()
+        view.viewModel = viewModel
         
         return view
     }
