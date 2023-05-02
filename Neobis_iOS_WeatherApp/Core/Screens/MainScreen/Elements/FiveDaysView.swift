@@ -8,27 +8,34 @@
 import Foundation
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class FiveDaysView: UIView {
     
-    var weekWeather = [Any]()
+    private lazy var weatherList = BehaviorRelay<[WeatherList]>(value: [])
     
-    let fiveDaysLabel = CustomLabel(font: Resources.Fonts.Name.bold,
+    private let fiveDaysLabel = CustomLabel(font: Resources.Fonts.Name.bold,
                             size: Resources.Fonts.Size.regular3,
                             text: "The Next 5 days",
                             color: .black)
     
     
-    let day = CustomLabel(font: Resources.Fonts.Name.regular,
+    private let day = CustomLabel(font: Resources.Fonts.Name.regular,
                           size: Resources.Fonts.Size.regular1,
                           text: "",
                           color: .black)
     
-    let stackView: UIStackView = {
+    private var currentDate = NSDate.now
+    
+    private let disposeBag = DisposeBag()
+    
+    private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 5
         stack.distribution = .fillEqually
+        stack.alignment = .fill
         return stack
     }()
     
@@ -36,6 +43,7 @@ class FiveDaysView: UIView {
         super.init(frame: frame)
         backgroundColor = .clear
         setupViews()
+        bindWeatherList()
     }
     
     override func draw(_ rect: CGRect) {
@@ -55,28 +63,65 @@ class FiveDaysView: UIView {
         addSubview(stackView)
         addSubview(fiveDaysLabel)
         
-        for _ in 0..<5 {
-            let weekDayView = WeekDayView()
-            
-            weekDayView.snp.makeConstraints { make in
-                make.height.equalTo(Resources.Constraints.weekDaySide)
-            }
-            
-            stackView.addArrangedSubview(weekDayView)
-        }
+        
         
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.height.equalTo(Resources.Constraints.weekDaySide)
-            make.width.equalTo(Resources.Constraints.weekDaySide * 5)
+            make.horizontalEdges.equalToSuperview()
+                .inset(15)
         }
         
         fiveDaysLabel.snp.makeConstraints { make in
             make.bottom.equalTo(stackView.snp.top)
-                .inset(-16)
+                .inset(-26)
             make.left.equalTo(stackView.snp.left)
         }
+    }
+    
+    private func updateUI(with weatherList: [WeatherList]) {
+        for day in weatherList {
+            
+            let calendar = Calendar.current
+            
+            let date = calendar.dateComponents([.day], from: Date(timeIntervalSince1970: day.dt))
+            let dateDay = date.day
+            
+            let nextDayDate = Calendar.current.date(byAdding: .day, value: 1, to: self.currentDate)!
+            let nextDay = calendar.dateComponents([.day], from: nextDayDate).day
+            
+            if dateDay == nextDay {
+                let weekDayView = WeekDayView()
+                weekDayView.temperature.text = "\(Int(day.main["temp"] ?? 0.0))°C"
+                weekDayView.weatherImage.loadImage(from: "https://openweathermap.org/img/wn/\(day.weather.first?.icon ?? "10d").png")
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "EEEE"
+                
+                weekDayView.day.text = "\(dateFormatter.string(from: Date(timeIntervalSince1970: day.dt)))"
+                
+                weekDayView.snp.makeConstraints { make in
+                    make.height.equalTo(weekDayView.snp.width)
+                }
+                
+                stackView.addArrangedSubview(weekDayView)
+                
+                currentDate = nextDayDate
+            }
+        }
+    }
+    
+    private func bindWeatherList() {
+        weatherList
+            .asObservable()
+            .subscribe { [weak self] list in
+                self?.updateUI(with: list)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func configureView(data: [WeatherList]) {
+        self.weatherList.accept(data)
     }
     
 }

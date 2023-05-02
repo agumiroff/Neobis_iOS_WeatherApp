@@ -11,8 +11,8 @@ import UIKit
 protocol ModuleFactory {
     
     func buildMainScreen(coordinator: MainFlowCoordinator,
-                         data: WeatherModel,
-                         location: LocationModel) -> (UIViewController)
+                         data: WeatherModel?,
+                         location: LocationModel) -> UIViewController
     
     func buildDetailScreen(coordinator: MainFlowCoordinator) -> UIViewController
     

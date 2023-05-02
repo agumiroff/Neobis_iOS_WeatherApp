@@ -10,13 +10,16 @@ import RxSwift
 import RxCocoa
 
 protocol SearchScreenViewModel {
+    
     func searchCall(call: String)
     
     var cities: BehaviorRelay<[LocationModel]> { get }
     
+    var state: BehaviorRelay<State> { get }
+    
     func viewDidLoad()
     
-    func pop()
-    
     func locationDidTap(location: LocationModel)
+    
+    func cancelSearch()
 }

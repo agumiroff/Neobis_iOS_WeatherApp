@@ -8,24 +8,19 @@
 import Foundation
 
 struct WeatherModel: Codable {
-    let weather: [Weather]
-    let main: Dictionary<String, Double>
-    let visibility: Double
-    let wind: Dictionary<String, Double>
-//    let wind: [Wind]
+    let list: [WeatherList]
 }
 
 struct Weather: Codable {
-    let id: Int
-    
     let description: String
     let icon: String
     
 }
 
-//struct Main {
-//    let temp: Double
-//    let humidity: Double
-//    let pressure: Double
-//}
-
+struct WeatherList: Codable {
+    let dt: Double
+    let main: Dictionary<String, Double>
+    let weather: [Weather]
+    let wind: Dictionary<String, Double>
+    let visibility: Double
+}

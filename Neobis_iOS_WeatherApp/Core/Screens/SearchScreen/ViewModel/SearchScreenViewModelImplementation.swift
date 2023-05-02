@@ -11,13 +11,13 @@ import RxCocoa
 
 class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
     
-    
-    
+    var state: RxRelay.BehaviorRelay<State> = BehaviorRelay(value: .initial)
+        
     var networkService: NetworkService?
     
     var cities: RxRelay.BehaviorRelay<[LocationModel]> = BehaviorRelay(value: [])
     
-    var data = [LocationModel]()
+    var data = [WeatherModel]()
     
     typealias CoordinatorType = MainFlowCoordinator
     var coordinator: CoordinatorType?
@@ -27,26 +27,35 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
     }
     
     func searchCall(call: String) {
-        
-        networkService?.getCoordinatesByLocationName(location: call, completion: { [weak self] result in
+        networkService?.getCoordinatesByLocationName(location: call, completion: {
+            [weak self] result in
             switch result {
             case .success(let data):
                 self?.cities.accept(data)
-                print(data)
             case .failure(let error):
+                self?.state.accept(.failure)
                 print(error)
             }
         })
     }
     
-    func pop() {
-        coordinator?.pop()
-    }
     
     func locationDidTap(location: LocationModel) {
-        networkService?.getWeatherData(location: location, completion: { [weak self] model in
-            self?.coordinator?.showMainScreen(data: model, location: location)
+        self.state.accept(.loading)
+        networkService?.getWeatherData(location: location, completion: { [weak self] model, result in
+            switch result {
+            case .failure:
+                self?.state.accept(.failure)
+            case .success:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self?.coordinator?.showMainScreen(data: model, location: location)
+                    self?.state.accept(.success)
+                })
+            }
         })
     }
     
+    func cancelSearch() {
+        coordinator?.pop()
+    }
 }

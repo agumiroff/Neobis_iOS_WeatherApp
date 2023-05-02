@@ -7,35 +7,40 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+
 
 class MainFlowCoordinatorImplementation<N>: AppCoordinator<N> where N: MainFlowNavigation {
     
     private var module: ModuleFactory
     
-    init(moduleFactory: ModuleFactory, navigationController: N) {
-        self.module = moduleFactory
-        super.init(navigationController: navigationController)
+    private let disposeBag = DisposeBag()
+    
+    init(
+        moduleFactory: ModuleFactory,
+        navigationController: N) {
+            
+            self.module = moduleFactory
+            super.init(navigationController: navigationController)
+            
     }
     
     override func start() {
         super.start()
-        selectScreenToShow()
-    }
-    
-    private func selectScreenToShow() {
-        // check dataBase if there stored data from last call
+        
         showSearchScreen()
     }
+
 }
 
 extension MainFlowCoordinatorImplementation: MainFlowCoordinator {
     
     //    func finish
     //    showMainScreen
-    func showMainScreen(data: WeatherModel, location: LocationModel) {
-        //write properties to storage
+    func showMainScreen(data: WeatherModel?, location: LocationModel) {
         let vc = module.buildMainScreen(coordinator: self, data: data, location: location)
-        navigationController?.pushViewController(vc, animated: false)
+        navigationController?.viewControllers = [vc]
     }
     
     func showSearchScreen() {
@@ -43,11 +48,7 @@ extension MainFlowCoordinatorImplementation: MainFlowCoordinator {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func showLoader() {
-        
-    }
-    
     func pop() {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -10,6 +10,11 @@ import UIKit
 
 class WeekDayView: UIView {
     
+    let day = CustomLabel(font: Resources.Fonts.Name.regular,
+                          size: Resources.Fonts.Size.regular1,
+                          text: "Monday",
+                          color: .black)
+    
     let temperature = CustomLabel(font: Resources.Fonts.Name.regular,
                                   size: Resources.Fonts.Size.regular1,
                                   text: "8C",
@@ -18,6 +23,7 @@ class WeekDayView: UIView {
     let weatherImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "cloud.fill")
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     
@@ -38,7 +44,7 @@ class WeekDayView: UIView {
         let rect = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
         let path = UIBezierPath(roundedRect: rect, cornerRadius: Resources.Constraints.weekDayRadius)
         
-        UIColor.clear.set()
+        UIColor.systemGray4.set()
         path.fill()
     }
     
@@ -48,12 +54,19 @@ class WeekDayView: UIView {
     
     func setupViews() {
         addSubViews(subViews: [
-            weatherImage, temperature
+            weatherImage, temperature, day
         ])
+        
+        day.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+                .offset(-15)
+            make.horizontalEdges.equalToSuperview()
+        }
         
         weatherImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(13)
+            make.size.equalTo(30)
         }
         
         temperature.snp.makeConstraints { make in

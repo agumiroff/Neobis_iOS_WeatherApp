@@ -49,8 +49,7 @@ class TemperatureView: UIView {
         }
         
         temperature.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     

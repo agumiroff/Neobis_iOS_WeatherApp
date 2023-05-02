@@ -12,6 +12,6 @@ protocol NetworkService: AnyObject {
     
     func getCoordinatesByLocationName(location: String, completion: @escaping (Result<[LocationModel], Error>) -> Void)
     
-    func getWeatherData(location: LocationModel, completion: @escaping (WeatherModel) -> Void)
+    func getWeatherData(location: LocationModel, completion: @escaping (WeatherModel?, callResult) -> Void)
 }
 

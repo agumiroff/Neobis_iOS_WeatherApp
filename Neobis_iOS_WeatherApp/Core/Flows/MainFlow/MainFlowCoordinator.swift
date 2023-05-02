@@ -6,14 +6,15 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol MainFlowCoordinator: Coordinator {
-    
-    func showMainScreen(data: WeatherModel, location: LocationModel)
+//
+    func showMainScreen(data: WeatherModel?, location: LocationModel)
     
     func showSearchScreen()
     
-    func showLoader()
-    
     func pop()
+
 }

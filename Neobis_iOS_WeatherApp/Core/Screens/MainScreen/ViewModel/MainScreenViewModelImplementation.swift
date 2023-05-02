@@ -14,44 +14,27 @@ class MainScreenViewModelImplementation: ViewModel, MainScreenViewModel {
     typealias CoordinatorType = MainFlowCoordinator
     var coordinator: CoordinatorType?
     
+    var location: LocationModel?
+    
     var weatherData: WeatherModel?
     
-    var state: RxRelay.BehaviorRelay<State> = BehaviorRelay(value: .initial)
-    
-    func searchDidTap() {
+    var state: BehaviorRelay<State> = BehaviorRelay(value: .initial)
+     
+    func searchCity() {
         state.accept(.loading)
-        DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+            self?.coordinator?.showSearchScreen()
+            self?.state.accept(.success)
+        })
+    }
+    
+    func viewDidLoad() {
+        if location != nil && weatherData != nil {
             self.state.accept(.success)
-        })
-    }
-    
-    func setState(state: State) {
-        self.state.accept(state)
-        DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+        } else {
             self.state.accept(.failure)
-        })
+        }
     }
-    
-    func viewAskedForTransition() {
-        coordinator?.showSearchScreen()
-    }
-    
-    func viewAskedForLoading() {
-        coordinator?.showLoader()
-        DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
-            self.setState(state: .success)
-        })
-    }
-    
-    func searchCity(name: String) {
-        coordinator?.showSearchScreen()
-    }
-    
 }
 
-enum State {
-    case initial
-    case loading
-    case success
-    case failure
-}
+

@@ -11,7 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class SearchScreenVCImplementation: UIViewController, SearchScreenVC {
+class SearchScreenVCImplementation: UIViewController {
    
     typealias ViewModelType = SearchScreenViewModel
     var viewModel: ViewModelType?
@@ -37,7 +37,7 @@ class SearchScreenVCImplementation: UIViewController, SearchScreenVC {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .black
-        button.addTarget(self, action: #selector(closeSerach), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cancelSearch), for: .touchUpInside)
         return button
     }()
     
@@ -52,6 +52,15 @@ class SearchScreenVCImplementation: UIViewController, SearchScreenVC {
         return collection
     }()
     
+    init(viewModel: SearchScreenViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
@@ -64,7 +73,6 @@ class SearchScreenVCImplementation: UIViewController, SearchScreenVC {
         collectionConfig()
         bindText()
         bindCities()
-        setupGradient()
         viewModel?.viewDidLoad()
     }
     
@@ -117,7 +125,9 @@ class SearchScreenVCImplementation: UIViewController, SearchScreenVC {
             .asObservable()
             .subscribe {[weak self]  _ in
                 if self?.searchField.text == "" { return }
-                self?.viewModel?.searchCall(call: self?.searchField.text ?? "")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in //почему на главном?
+                    self?.viewModel?.searchCall(call: self?.searchField.text ?? "")
+                })
             }
             .disposed(by: disposeBag)
     }
@@ -134,22 +144,8 @@ class SearchScreenVCImplementation: UIViewController, SearchScreenVC {
             .disposed(by: disposeBag)
     }
     
-    private func setupGradient() {
-        let gradient = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [
-            UIColor(hexString: "#30A2C5").cgColor,
-            UIColor(hexString: "#000000").cgColor,
-        ]
-        view.layer.insertSublayer(gradient, at: 0)
-    }
-    
-    func textFieldDidChange(text: String) {
-        
-    }
-    
-    @objc private func closeSerach() {
-        viewModel?.pop()
+    @objc private func cancelSearch() {
+        viewModel?.cancelSearch()
     }
     
 }

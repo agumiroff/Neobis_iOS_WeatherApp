@@ -11,17 +11,14 @@ import RxSwift
 
 protocol MainScreenViewModel: AnyObject {
     
-    var state: BehaviorRelay<State> { get }
-    
     var weatherData: WeatherModel? { get }
     
-    func searchDidTap()
+    var location: LocationModel? { get }
     
-    func setState(state: State)
+    var state: BehaviorRelay<State> { get }
     
-    func viewAskedForTransition()
+    func searchCity()
     
-    func viewAskedForLoading()
+    func viewDidLoad()
     
-    func searchCity(name: String)
 }
