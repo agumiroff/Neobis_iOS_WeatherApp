@@ -17,6 +17,7 @@
 		C62FC84829FC7037001945E7 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FC84729FC7037001945E7 /* WeatherModel.swift */; };
 		C62FC84A29FC7821001945E7 /* ErrorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FC84929FC7821001945E7 /* ErrorScreen.swift */; };
 		C62FC84C29FCA057001945E7 /* NetworkServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FC84B29FCA057001945E7 /* NetworkServiceImplementation.swift */; };
+		C642C5C32A0211FE0090AE4D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C642C5C22A0211FE0090AE4D /* Errors.swift */; };
 		C68A270929FCB60000862000 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A270829FCB60000862000 /* CollectionViewCell.swift */; };
 		C68A270B29FDD7C600862000 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A270A29FDD7C600862000 /* UIImageView + Extension.swift */; };
 		C68A270D29FDDAA100862000 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A270C29FDDAA100862000 /* ImageCache.swift */; };
@@ -165,6 +166,7 @@
 		C62FC84729FC7037001945E7 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		C62FC84929FC7821001945E7 /* ErrorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorScreen.swift; sourceTree = "<group>"; };
 		C62FC84B29FCA057001945E7 /* NetworkServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceImplementation.swift; sourceTree = "<group>"; };
+		C642C5C22A0211FE0090AE4D /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		C68A270829FCB60000862000 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C68A270A29FDD7C600862000 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		C68A270C29FDDAA100862000 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				C6D62F1E29F7831E00B33E9D /* AppCoordinator.swift */,
 				C6D62F2029F7835900B33E9D /* AppNavigation.swift */,
 				C68A270C29FDDAA100862000 /* ImageCache.swift */,
+				C642C5C22A0211FE0090AE4D /* Errors.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 			files = (
 				C68A271F2A00A5F400862000 /* UIViewController+Extension.swift in Sources */,
 				C6D630AE29F9C5EA00B33E9D /* FiveDaysView.swift in Sources */,
+				C642C5C32A0211FE0090AE4D /* Errors.swift in Sources */,
 				C68A270D29FDDAA100862000 /* ImageCache.swift in Sources */,
 				C68A271D2A009AF300862000 /* Event.swift in Sources */,
 				C6D630B029F9C6E000B33E9D /* WeekDayView.swift in Sources */,

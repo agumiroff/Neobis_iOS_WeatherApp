@@ -40,29 +40,18 @@ class NetworkServiceImplementation: NetworkService {
         task.resume()
     }
     
-    func getWeatherData(location: LocationModel, completion: @escaping (WeatherModel?, callResult) -> Void) {
+    func getWeatherData(location: LocationModel) async throws -> WeatherModel {
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(location.lat)&lon=\(location.lon)&appid=\(ApiCall.key)&units=metric"
         
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else { throw  NetworkError.badUrl}
         
-        let queue = DispatchQueue.global(qos: .utility)
+        let responce = try await URLSession.shared.data(from: url)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        var data: WeatherModel?
-                
-        let workItem = DispatchWorkItem(qos: .userInteractive) {
-            guard let tempData = try? Data(contentsOf: url) else { return }
-            data = try? JSONDecoder().decode(WeatherModel.self, from: tempData)
-        }
+        let result = try decoder.decode(WeatherModel.self, from: responce.0)
         
-        queue.async(execute: workItem)
-        
-        workItem.notify(queue: .main, execute: {
-            if let data = data {
-                completion(data, .success)
-            } else {
-                completion(nil, .failure)
-            }
-        })
+        return result
     }
 
 }

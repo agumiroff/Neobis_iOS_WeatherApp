@@ -40,18 +40,15 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
     }
     
     
-    func locationDidTap(location: LocationModel) {
+    func locationDidTap(location: LocationModel) async {
+        
         self.state.accept(.loading)
-        networkService?.getWeatherData(location: location, completion: { [weak self] model, result in
-            switch result {
-            case .failure:
-                self?.state.accept(.failure)
-            case .success:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self?.coordinator?.showMainScreen(data: model, location: location)
-                    self?.state.accept(.success)
-                })
-            }
+        
+        let model = try? await self.networkService?.getWeatherData(location: location) //do try catch?
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.coordinator?.showMainScreen(data: model, location: location)
+            self.state.accept(.success)
         })
     }
     
@@ -59,3 +56,6 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
         coordinator?.pop()
     }
 }
+
+//
+

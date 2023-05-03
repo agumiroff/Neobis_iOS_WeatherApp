@@ -19,7 +19,7 @@ protocol SearchScreenViewModel {
     
     func viewDidLoad()
     
-    func locationDidTap(location: LocationModel)
+    func locationDidTap(location: LocationModel) async
     
     func cancelSearch()
 }
