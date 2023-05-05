@@ -46,7 +46,7 @@ enum Resources {
         static let searchViewRadius = getSize(side: .height, size: 60)
     }
     
-    enum Fonts {
+    enum Font {
         
         enum Size {
             

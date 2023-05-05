@@ -13,17 +13,10 @@ import RxCocoa
 
 class MainFlowCoordinatorImplementation<N>: AppCoordinator<N> where N: MainFlowNavigation {
     
-    private var module: ModuleFactory
-    
     private let disposeBag = DisposeBag()
     
-    init(
-        moduleFactory: ModuleFactory,
-        navigationController: N) {
-            
-            self.module = moduleFactory
-            super.init(navigationController: navigationController)
-            
+    override init(navigationController: N) {
+        super.init(navigationController: navigationController)
     }
     
     override func start() {
@@ -39,12 +32,28 @@ extension MainFlowCoordinatorImplementation: MainFlowCoordinator {
     //    func finish
     //    showMainScreen
     func showMainScreen(data: WeatherModel?, location: LocationModel) {
-        let vc = module.buildMainScreen(coordinator: self, data: data, location: location)
+        
+        var state: WeatherViewController.WeatherState = .initial
+        
+        guard let data = data else { return }
+        
+        if data.list.isEmpty {
+            state = .error
+        } else {
+            state = .success
+        }
+        let vc = WeatherModuleBuilder.buildWeatherModule(
+            coordinator: self,
+            data: data,
+            location: location,
+            state: state
+        )
+        
         navigationController?.viewControllers = [vc]
     }
     
     func showSearchScreen() {
-        let vc = module.buildDetailScreen(coordinator: self)
+        let vc = SearchModuleBuilder.buildSearchModule(coordinator: self)
         navigationController?.pushViewController(vc, animated: false)
     }
     

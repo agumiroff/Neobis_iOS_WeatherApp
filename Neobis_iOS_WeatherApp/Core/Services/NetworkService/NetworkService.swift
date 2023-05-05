@@ -10,8 +10,14 @@ import Foundation
 
 protocol NetworkService: AnyObject {
     
-    func getCoordinatesByLocationName(location: String, completion: @escaping (Result<[LocationModel], Error>) -> Void)
+    func getCoordinatesByLocationName(
+        location: String,
+        completion: @escaping (Result<[LocationModel], Error>) -> Void
+    )
     
-    func getWeatherData(location: LocationModel) async throws -> WeatherModel
+    func getWeatherData(
+        location: LocationModel,
+        completion: @escaping (Result<WeatherModel, Error>) -> Void
+    )
 }
 

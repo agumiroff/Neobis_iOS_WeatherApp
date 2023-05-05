@@ -16,7 +16,10 @@ class NetworkServiceImplementation: NetworkService {
     
    
     
-    func getCoordinatesByLocationName(location: String, completion: @escaping (Result<[LocationModel], Error>) -> Void) {
+    func getCoordinatesByLocationName(
+        location: String,
+        completion: @escaping (Result<[LocationModel], Error>) -> Void
+    ) {
         let urlString = "https://api.openweathermap.org/geo/1.0/direct?q=\(location)&limit=\(ApiCall.limit)&appid=\(ApiCall.key)"
         
         guard let url = URL(string: urlString) else { return }
@@ -40,7 +43,36 @@ class NetworkServiceImplementation: NetworkService {
         task.resume()
     }
     
-    func getWeatherData(location: LocationModel) async throws -> WeatherModel {
+    func getWeatherData(
+        location: LocationModel,
+        completion: @escaping (Result<WeatherModel, Error>) -> Void
+    ) {
+        
+        let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(location.lat)&lon=\(location.lon)&appid=\(ApiCall.key)&units=metric"
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, error in
+            
+            if let error = error {
+                completion(.failure(error)) // log error
+                return
+            }
+            
+            do {
+                guard let data = data else { return }
+                let dataFromJSON = try JSONDecoder().decode(WeatherModel.self, from: data)
+                completion(.success(dataFromJSON))
+            } catch {
+                completion(.failure(error))
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func getWeatherDataAsync(location: LocationModel) async throws -> WeatherModel {
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(location.lat)&lon=\(location.lon)&appid=\(ApiCall.key)&units=metric"
         
         guard let url = URL(string: urlString) else { throw  NetworkError.badUrl}

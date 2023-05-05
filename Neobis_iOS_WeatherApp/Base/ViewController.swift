@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ViewController: AnyObject {
+protocol ViewController: AnyObject { //ViewModelable?
     
     associatedtype ViewModelType
     var viewModel: ViewModelType? { get set }

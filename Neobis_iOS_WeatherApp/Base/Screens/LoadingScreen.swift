@@ -8,36 +8,30 @@
 import Foundation
 import UIKit
 
-class LoadingScreen: UIViewController {
+class LoadingScreen: UIView {
     let loaderView = LoadingView()
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nil, bundle: nil)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
+        addSubview(loaderView)
+        showLoadingView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        navigationController?.isNavigationBarHidden = true
-        
-        view.addSubview(loaderView)
-        showLoadingView()
-    }
-    
     private func showLoadingView() {
         let loader = LoadingView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        view.addSubview(loader)
-        loader.center = view.center
+        addSubview(loader)
+        loader.center = center
         var opacityValue = 1.0
         var isVisible = true
         
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             
             if isVisible {
                 opacityValue -= 1/100
@@ -58,4 +52,26 @@ class LoadingScreen: UIViewController {
 //
     }
     
+}
+
+class LoadingView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = .clear
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        let cornerRadius = min(bounds.height, bounds.width)
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+        
+        UIColor.red.set()
+        path.fill()
+    }
 }

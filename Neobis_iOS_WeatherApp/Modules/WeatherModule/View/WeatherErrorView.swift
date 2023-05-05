@@ -1,14 +1,17 @@
 //
-//  ErrorScreen.swift
+//  WeatherErrorView.swift
 //  Neobis_iOS_WeatherApp
 //
-//  Created by G G on 29.04.2023.
+//  Created by G G on 04.05.2023.
 //
 
 import Foundation
 import UIKit
+import RxSwift
 
-class ErrorScreen: UIView {
+class WeatherErrorView: UIView {
+    
+    private var _event: BehaviorSubject<Event> = BehaviorSubject(value: .none)
     
     let errorMessage: UILabel = {
         let label = UILabel()
@@ -51,3 +54,16 @@ class ErrorScreen: UIView {
         }
     }
 }
+
+extension WeatherErrorView {
+    
+    enum Event {
+        case none
+        case retrySearch
+    }
+    
+    var event: Observable<Event> {
+        _event.asObserver()
+    }
+}
+

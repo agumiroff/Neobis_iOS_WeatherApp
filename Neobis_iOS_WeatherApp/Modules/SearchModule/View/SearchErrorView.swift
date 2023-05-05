@@ -1,14 +1,18 @@
 //
-//  ErrorScreen.swift
+//  SearchErrorView.swift
 //  Neobis_iOS_WeatherApp
 //
-//  Created by G G on 29.04.2023.
+//  Created by G G on 05.05.2023.
 //
 
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
-class ErrorScreen: UIView {
+class SearchErrorView: UIView {
+    
+    private var _event: BehaviorSubject<ErrorEvent> = BehaviorSubject(value: .none)
     
     let errorMessage: UILabel = {
         let label = UILabel()
@@ -49,5 +53,17 @@ class ErrorScreen: UIView {
         errorMessage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension SearchErrorView {
+    
+    enum ErrorEvent {
+        case none
+        case retry
+    }
+    
+    var event: Observable<ErrorEvent> {
+        _event.asObserver()
     }
 }

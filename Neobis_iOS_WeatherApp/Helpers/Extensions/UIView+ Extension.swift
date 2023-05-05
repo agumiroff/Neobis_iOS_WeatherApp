@@ -9,15 +9,9 @@ import Foundation
 import UIKit
 
 extension UIView {
-
-    
     public func addSubViews(subViews: [UIView]) {
-        
         for view in subViews {
             addSubview(view)
         }
-        
     }
-    
-    
 }
