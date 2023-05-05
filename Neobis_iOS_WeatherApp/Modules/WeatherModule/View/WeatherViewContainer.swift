@@ -44,9 +44,6 @@ class WeatherViewContainer: UIView { // hasViewModel??
         }
     }
     
-    private func stateDidChange(state: State) {
-        
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -58,7 +55,7 @@ extension WeatherViewContainer {
     enum WeatherState {
         case initial
         case loading
-        case success(WeatherModel, LocationModel)
+        case success(WeatherModelDomain)
         case error
     }
     
@@ -71,12 +68,11 @@ extension WeatherViewContainer {
             errorView.isHidden = true
             loadingView.isHidden = false
             successView.isHidden = true
-        case let .success(weather, location):
+        case let .success(data):
             errorView.isHidden = true
             loadingView.isHidden = true
             successView.isHidden = false
-            successView.renderUI(state: .init(weather: weather,
-                                              location: location))
+            successView.renderUI(state: .init(weatherData: data))
         case .error:
             errorView.isHidden = false
             loadingView.isHidden = true

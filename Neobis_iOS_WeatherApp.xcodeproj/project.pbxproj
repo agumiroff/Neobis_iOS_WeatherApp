@@ -18,6 +18,8 @@
 		C62FC84C29FCA057001945E7 /* NetworkServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62FC84B29FCA057001945E7 /* NetworkServiceImplementation.swift */; };
 		C63D93952A04814A0006BFE8 /* WeatherModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D93942A04814A0006BFE8 /* WeatherModuleBuilder.swift */; };
 		C63D93982A0482220006BFE8 /* SearchModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D93972A0482220006BFE8 /* SearchModuleBuilder.swift */; };
+		C63D939A2A048E5A0006BFE8 /* WeekDayModelDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D93992A048E5A0006BFE8 /* WeekDayModelDomain.swift */; };
+		C63D939C2A0491D20006BFE8 /* WeatherModelDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D939B2A0491D20006BFE8 /* WeatherModelDomain.swift */; };
 		C642C5C32A0211FE0090AE4D /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C642C5C22A0211FE0090AE4D /* Errors.swift */; };
 		C642C5C52A0327C70090AE4D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C642C5C42A0327C70090AE4D /* WeatherViewController.swift */; };
 		C642C5C72A032BE50090AE4D /* WeatherErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C642C5C62A032BE50090AE4D /* WeatherErrorView.swift */; };
@@ -167,6 +169,8 @@
 		C62FC84B29FCA057001945E7 /* NetworkServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceImplementation.swift; sourceTree = "<group>"; };
 		C63D93942A04814A0006BFE8 /* WeatherModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModuleBuilder.swift; sourceTree = "<group>"; };
 		C63D93972A0482220006BFE8 /* SearchModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleBuilder.swift; sourceTree = "<group>"; };
+		C63D93992A048E5A0006BFE8 /* WeekDayModelDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayModelDomain.swift; sourceTree = "<group>"; };
+		C63D939B2A0491D20006BFE8 /* WeatherModelDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelDomain.swift; sourceTree = "<group>"; };
 		C642C5C22A0211FE0090AE4D /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		C642C5C42A0327C70090AE4D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		C642C5C62A032BE50090AE4D /* WeatherErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherErrorView.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				C6D62F1429F7504600B33E9D /* Dependencies */,
 				C6D62F1929F777E800B33E9D /* Base */,
 				C6D62ED929F6FFBB00B33E9D /* Core */,
+				C6D62EE429F7280600B33E9D /* Modules */,
 				C6D62EE029F700F600B33E9D /* Helpers */,
 				C6D62ED829F6FFB000B33E9D /* Application */,
 				C6D62ED729F6FF9F00B33E9D /* Resources */,
@@ -449,7 +454,6 @@
 			children = (
 				C6D630B129F9D94B00B33E9D /* Services */,
 				C6D62EED29F72CC600B33E9D /* Factories */,
-				C6D62EE429F7280600B33E9D /* Modules */,
 				C6D62EDB29F6FFC300B33E9D /* Flows */,
 			);
 			path = Core;
@@ -468,6 +472,8 @@
 			children = (
 				C6D630B529F9DCD100B33E9D /* LocationModel.swift */,
 				C62FC84729FC7037001945E7 /* WeatherModel.swift */,
+				C63D93992A048E5A0006BFE8 /* WeekDayModelDomain.swift */,
+				C63D939B2A0491D20006BFE8 /* WeatherModelDomain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -999,8 +1005,10 @@
 				C6D62F0A29F7457400B33E9D /* FlowFactory.swift in Sources */,
 				C6D62EC429F6FF9700B33E9D /* AppDelegate.swift in Sources */,
 				C6D62EC629F6FF9700B33E9D /* SceneDelegate.swift in Sources */,
+				C63D939C2A0491D20006BFE8 /* WeatherModelDomain.swift in Sources */,
 				C62FC84A29FC7821001945E7 /* ErrorScreen.swift in Sources */,
 				C6D630BA29F9F1B900B33E9D /* MainFlowCoordinator.swift in Sources */,
+				C63D939A2A048E5A0006BFE8 /* WeekDayModelDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

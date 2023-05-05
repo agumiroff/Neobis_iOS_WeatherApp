@@ -97,7 +97,8 @@ extension WeatherViewController {
         case .loading:
             container.render(state: .loading)
         case .success:
-            container.render(state: .success((viewModel?.weatherData)!, (viewModel?.location)!))
+            guard let data = viewModel?.weatherData else { return }
+            container.render(state: .success(data))
         case .error:
             container.render(state: .error)
         case .initial:

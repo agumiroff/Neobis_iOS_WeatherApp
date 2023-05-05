@@ -10,15 +10,21 @@ import UIKit
 
 class TemperatureView: UIView {
     
-    let cloudImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "cloud.drizzle.fill")
-        return iv
+    private let cloudImage: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
     }()
     
-    let temperature = CustomLabel(font: Resources.Font.Name.thin,
-                                  size: Resources.Font.Size.title4,
-                                  text: "10°C", color: .black)
+    private let temperatureLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(
+            name: Resources.Font.Name.thin,
+            size: Resources.Font.Size.title4
+        )
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +44,7 @@ class TemperatureView: UIView {
     private func setupViews() {
         
         addSubViews(subViews: [
-            cloudImage, temperature,
+            cloudImage, temperatureLabel,
         ])
         
         
@@ -48,9 +54,17 @@ class TemperatureView: UIView {
             make.top.equalToSuperview()
         }
         
-        temperature.snp.makeConstraints { make in
+        temperatureLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func configView(
+        imageURL: String,
+        temperature: String
+    ) {
+        self.cloudImage.loadImage(from: imageURL)
+        self.temperatureLabel.text = temperature
     }
     
     required init?(coder: NSCoder) {

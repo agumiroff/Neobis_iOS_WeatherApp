@@ -14,9 +14,7 @@ final class WeatherSuccessView: UIView {
     
     private var _event: BehaviorSubject<WeatherViewEvent> = BehaviorSubject(value: .none)
     
-    private var _weather: WeatherModel?
-    
-    private var _location: LocationModel?
+    private var _weather: WeatherModelDomain?
     
     private let searchLogo: UIButton = {
         let button = UIButton()
@@ -190,33 +188,36 @@ final class WeatherSuccessView: UIView {
     }
     
     func renderUI(state: State) {
-        _weather = state.weather
-        _location = state.location
+        _weather = state.weatherData
         setData()
     }
     
     private func setData() {
         
-        guard let weather = _weather, let location = _location else { return }
+        guard let weather = _weather else { return }
         
         let dateFormatter = DateFormatter()
-        let date = Date(timeIntervalSince1970: weather.list.first?.dt ?? 0.0)
+        let date = Date(timeIntervalSince1970: weather.dt)
         dateLabel.text = dateFormatter.string(from: date)
         
-        city.text = location.name
-        country.text = location.country
+        city.text = weather.name
         
-        var icon = ""
-        icon =  "\(weather.list.first?.weather.first?.icon ?? "")"
-        temperatureView.temperature.text = "\(Int(weather.list.first?.main["temp"] ?? 0))°C"
+        country.text = weather.country
+        
+        temperatureView.configView(
+            imageURL: "https://openweathermap.org/img/wn/\(weather.icon).png",
+            temperature: "\(Int(weather.temperature))°C"
+        )
         temperatureView.layer.cornerRadius = self.temperatureView.bounds.width / 2
-        temperatureView.cloudImage.loadImage(from: "https://openweathermap.org/img/wn/\(icon).png")
         
+        windSpeed.text = String(weather.windspeed)
         
-        windSpeed.text = String(weather.list.first?.wind["speed"] ?? 0.0)
-        visibilityRange.text = String(weather.list.first?.visibility ?? 0.0)
-        humidityValue.text = String(weather.list.first?.main["humidity"] ?? 0.0)
-        airPressureValue.text = String(weather.list.first?.main["pressure"] ?? 0.0)
+        visibilityRange.text = String(weather.visibility)
+        
+        humidityValue.text = String(weather.humidity)
+        
+        airPressureValue.text = String(weather.pressure)
+        
         fiveDaysView.configureView(data: weather.list)
         
     }
@@ -236,7 +237,6 @@ extension WeatherSuccessView {
 
 extension WeatherSuccessView {
     struct State {
-        let weather: WeatherModel
-        let location: LocationModel
+        let weatherData: WeatherModelDomain
     }
 }

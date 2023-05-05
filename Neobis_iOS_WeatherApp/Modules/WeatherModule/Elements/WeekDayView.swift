@@ -10,24 +10,35 @@ import UIKit
 
 class WeekDayView: UIView {
     
-    let day = CustomLabel(font: Resources.Font.Name.regular,
-                          size: Resources.Font.Size.regular1,
-                          text: "Monday",
-                          color: .black)
-    
-    let temperature = CustomLabel(font: Resources.Font.Name.regular,
-                                  size: Resources.Font.Size.regular1,
-                                  text: "8C",
-                                  color: .black)
-    
-    let weatherImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "cloud.fill")
-        iv.contentMode = .scaleAspectFill
-        return iv
+    private let dayLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(
+            name: Resources.Font.Name.regular,
+            size: Resources.Font.Size.regular1
+        )
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
     }()
     
-    let squareView = UIView()
+    private let temperatureLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(
+            name: Resources.Font.Name.regular,
+            size: Resources.Font.Size.regular1
+        )
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
+    private let weatherImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private let squareView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,12 +63,12 @@ class WeekDayView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    private func setupViews() {
         addSubViews(subViews: [
-            weatherImage, temperature, day
+            weatherImage, temperatureLabel, dayLabel
         ])
         
-        day.snp.makeConstraints { make in
+        dayLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
                 .offset(-15)
             make.horizontalEdges.equalToSuperview()
@@ -69,9 +80,19 @@ class WeekDayView: UIView {
             make.size.equalTo(30)
         }
         
-        temperature.snp.makeConstraints { make in
+        temperatureLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(weatherImage.snp.bottom).offset(6)
         }
+    }
+    
+    func configView(
+        weatherImage: UIImage,
+        day: String,
+        temperature: String
+    ) {
+        self.weatherImage.image = weatherImage
+        self.dayLabel.text = day
+        self.temperatureLabel.text = temperature
     }
 }

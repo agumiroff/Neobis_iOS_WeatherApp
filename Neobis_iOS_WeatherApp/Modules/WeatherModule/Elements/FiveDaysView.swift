@@ -13,20 +13,30 @@ import RxCocoa
 
 class FiveDaysView: UIView {
     
-    private lazy var weatherList = BehaviorRelay<[WeatherList]>(value: [])
+    private lazy var weatherList = BehaviorRelay<[WeekDayModelDomain]>(value: [])
     
-    private let fiveDaysLabel = CustomLabel(font: Resources.Font.Name.bold,
-                            size: Resources.Font.Size.regular3,
-                            text: "The Next 5 days",
-                            color: .black)
+    private let fiveDaysLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(
+            name: Resources.Font.Name.bold,
+            size: Resources.Font.Size.regular3
+        )
+        label.textAlignment = .center
+        label.textColor = .black
+        label.text = "The Next 5 days"
+        return label
+    }()
     
-    
-    private let day = CustomLabel(font: Resources.Font.Name.regular,
-                          size: Resources.Font.Size.regular1,
-                          text: "",
-                          color: .black)
-    
-    private var currentDate = NSDate.now
+    private let dayLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(
+            name: Resources.Font.Name.regular,
+            size: Resources.Font.Size.regular1
+        )
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
     
     private let disposeBag = DisposeBag()
     
@@ -63,8 +73,6 @@ class FiveDaysView: UIView {
         addSubview(stackView)
         addSubview(fiveDaysLabel)
         
-        
-        
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -79,36 +87,10 @@ class FiveDaysView: UIView {
         }
     }
     
-    private func updateUI(with weatherList: [WeatherList]) {
-        for day in weatherList {
-            
-            let calendar = Calendar.current
-            
-            let date = calendar.dateComponents([.day], from: Date(timeIntervalSince1970: day.dt))
-            let dateDay = date.day
-            
-            let nextDayDate = Calendar.current.date(byAdding: .day, value: 1, to: self.currentDate)!
-            let nextDay = calendar.dateComponents([.day], from: nextDayDate).day
-            
-            if dateDay == nextDay {
-                let weekDayView = WeekDayView()
-                weekDayView.temperature.text = "\(Int(day.main["temp"] ?? 0.0))°C"
-                weekDayView.weatherImage.loadImage(from: "https://openweathermap.org/img/wn/\(day.weather.first?.icon ?? "10d").png")
-                
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "EEEE"
-                
-                weekDayView.day.text = "\(dateFormatter.string(from: Date(timeIntervalSince1970: day.dt)))"
-                
-                weekDayView.snp.makeConstraints { make in
-                    make.height.equalTo(weekDayView.snp.width)
-                }
-                
-                stackView.addArrangedSubview(weekDayView)
-                
-                currentDate = nextDayDate
-            }
-        }
+    private func updateUI(with weatherList: [WeekDayModelDomain]) {
+        let weekDayView = WeekDayView()
+        
+        
     }
     
     private func bindWeatherList() {
@@ -120,7 +102,7 @@ class FiveDaysView: UIView {
             .disposed(by: disposeBag)
     }
     
-    func configureView(data: [WeatherList]) {
+    func configureView(data: [WeekDayModelDomain]) {
         self.weatherList.accept(data)
     }
     

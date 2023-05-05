@@ -24,3 +24,5 @@ struct WeatherList: Codable {
     let wind: Dictionary<String, Double>
     let visibility: Double
 }
+
+

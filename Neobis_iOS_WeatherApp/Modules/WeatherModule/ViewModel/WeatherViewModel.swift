@@ -11,9 +11,7 @@ import RxSwift
 
 protocol WeatherViewModel: AnyObject {
     
-    var weatherData: WeatherModel? { get }
-    
-    var location: LocationModel? { get }
+    var weatherData: WeatherModelDomain? { get }
     
     var state: BehaviorRelay<WeatherViewController.WeatherState> { get }
     

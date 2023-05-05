@@ -14,9 +14,7 @@ class WeatherViewModelImplementation: ViewModel, WeatherViewModel {
     typealias CoordinatorType = MainFlowCoordinator
     var coordinator: CoordinatorType?
     
-    var location: LocationModel?
-    
-    var weatherData: WeatherModel?
+    var weatherData: WeatherModelDomain?
     
     var state: BehaviorRelay<WeatherViewController.WeatherState> = BehaviorRelay(value: .initial)
     
