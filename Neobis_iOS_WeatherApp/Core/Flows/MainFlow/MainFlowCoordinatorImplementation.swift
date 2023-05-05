@@ -31,22 +31,12 @@ extension MainFlowCoordinatorImplementation: MainFlowCoordinator {
     
     //    func finish
     //    showMainScreen
-    func showMainScreen(data: WeatherModel?, location: LocationModel) {
+    func showMainScreen(data: WeatherModel, location: LocationModel) {
         
-        var state: WeatherViewController.WeatherState = .initial
-        
-        guard let data = data else { return }
-        
-        if data.list.isEmpty {
-            state = .error
-        } else {
-            state = .success
-        }
         let vc = WeatherModuleBuilder.buildWeatherModule(
             coordinator: self,
             data: data,
-            location: location,
-            state: state
+            location: location
         )
         
         navigationController?.viewControllers = [vc]

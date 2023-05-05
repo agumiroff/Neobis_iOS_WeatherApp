@@ -31,8 +31,6 @@ class WeatherViewController: UIViewController, ViewController {   // hasViewMode
         setupGradient()
         bindViewModel()
         setupUI()
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.isToolbarHidden = true
     }
     
     

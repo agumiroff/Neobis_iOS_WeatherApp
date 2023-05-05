@@ -18,8 +18,8 @@ class MainFlowNavigation: AppNavigation {
         isNavigationBarHidden = false
         // navigation settings
         
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.isToolbarHidden = true
+        isNavigationBarHidden = true
+        isToolbarHidden = true
     }
 }
 

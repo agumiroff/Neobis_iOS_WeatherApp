@@ -196,9 +196,7 @@ final class WeatherSuccessView: UIView {
         
         guard let weather = _weather else { return }
         
-        let dateFormatter = DateFormatter()
-        let date = Date(timeIntervalSince1970: weather.dt)
-        dateLabel.text = dateFormatter.string(from: date)
+        dateLabel.text = weather.date
         
         city.text = weather.name
         

@@ -12,16 +12,16 @@ struct WeatherModuleBuilder {
     
     static func buildWeatherModule(
         coordinator: MainFlowCoordinator,
-        data: WeatherModel?,
-        location: LocationModel,
-        state: WeatherViewController.WeatherState
+        data: WeatherModel,
+        location: LocationModel
     ) -> UIViewController {
         
-        let viewModel = WeatherViewModelImplementation()
-        viewModel.weatherData = data
-        viewModel.coordinator = coordinator
-        viewModel.location = location
-        viewModel.state.accept(state)
+        let viewModel = WeatherViewModelImplementation(
+            coordinator: coordinator,
+            weatherData: WeatherModelDomain(
+            location: location,
+            weather: data
+        ))
         
         let view = WeatherViewController()
         view.viewModel = viewModel

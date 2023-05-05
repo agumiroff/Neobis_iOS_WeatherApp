@@ -14,12 +14,12 @@ struct WeekDayModelDomain {
 }
 
 extension WeekDayModelDomain {
-    init(weatherModelDomain: WeatherList) {
+    init(weather: WeatherList) {
         
         let dateFormatter = DateFormatter()
-        
-        self.day = "\(dateFormatter.string(from: Date(timeIntervalSince1970: weatherModelDomain.dt)))"
-        self.weatherImage = "https://openweathermap.org/img/wn/\(weatherModelDomain.weather.first?.icon ?? "10d").png"
-        self.temperature = "\(Int(weatherModelDomain.main["temp"] ?? 0.0))°C"
+        dateFormatter.dateFormat = "EEEE"
+        self.day = "\(dateFormatter.string(from: Date(timeIntervalSince1970: weather.dt)))"
+        self.weatherImage = "https://openweathermap.org/img/wn/\(weather.weather.first?.icon ?? "10d").png"
+        self.temperature = "\(Int(weather.main["temp"] ?? 0.0))°C"
     }
 }

@@ -13,7 +13,7 @@ import RxCocoa
 
 class FiveDaysView: UIView {
     
-    private lazy var weatherList = BehaviorRelay<[WeekDayModelDomain]>(value: [])
+    private lazy var weatherList = [WeekDayModelDomain]()
     
     private let fiveDaysLabel: UILabel = {
         let label = UILabel()
@@ -37,7 +37,7 @@ class FiveDaysView: UIView {
         label.textColor = .black
         return label
     }()
-    
+       
     private let disposeBag = DisposeBag()
     
     private let stackView: UIStackView = {
@@ -53,7 +53,6 @@ class FiveDaysView: UIView {
         super.init(frame: frame)
         backgroundColor = .clear
         setupViews()
-        bindWeatherList()
     }
     
     override func draw(_ rect: CGRect) {
@@ -88,22 +87,24 @@ class FiveDaysView: UIView {
     }
     
     private func updateUI(with weatherList: [WeekDayModelDomain]) {
-        let weekDayView = WeekDayView()
-        
-        
-    }
-    
-    private func bindWeatherList() {
-        weatherList
-            .asObservable()
-            .subscribe { [weak self] list in
-                self?.updateUI(with: list)
+        for day in weatherList {
+            let weekDayView = WeekDayView()
+            weekDayView.configView(
+                weatherImage: day.weatherImage,
+                day: day.day,
+                temperature: day.temperature
+            )
+            
+            stackView.addArrangedSubview(weekDayView)
+            
+            weekDayView.snp.makeConstraints { make in
+                make.height.equalTo(weekDayView.snp.width)
             }
-            .disposed(by: disposeBag)
+        }
     }
-    
+
     func configureView(data: [WeekDayModelDomain]) {
-        self.weatherList.accept(data)
+        updateUI(with: data)
     }
     
 }

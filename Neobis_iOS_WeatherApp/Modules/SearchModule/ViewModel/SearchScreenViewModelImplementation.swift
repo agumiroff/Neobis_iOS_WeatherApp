@@ -20,7 +20,13 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
     var data = [WeatherModel]()
     
     typealias CoordinatorType = MainFlowCoordinator
-    var coordinator: CoordinatorType?
+    var coordinator: CoordinatorType
+    
+    init(
+        coordinator: CoordinatorType
+    ) {
+        self.coordinator = coordinator
+    }
     
     private func searchCall(call: String) {
         networkService?.getCoordinatesByLocationName(location: call, completion: {
@@ -44,7 +50,7 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    self?.coordinator?.showMainScreen(
+                    self?.coordinator.showMainScreen(
                         data: data,
                         location: location
                     )
@@ -57,8 +63,8 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
         
     }
     
-    func cancelSearch() {
-        coordinator?.pop()
+    private func cancelSearch() {
+        coordinator.pop()
     }
     
     func handleEvent(event: SearchViewController.Event) {

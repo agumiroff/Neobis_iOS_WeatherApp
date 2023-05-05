@@ -87,11 +87,11 @@ class WeekDayView: UIView {
     }
     
     func configView(
-        weatherImage: UIImage,
+        weatherImage: String,
         day: String,
         temperature: String
     ) {
-        self.weatherImage.image = weatherImage
+        self.weatherImage.loadImage(from: weatherImage)
         self.dayLabel.text = day
         self.temperatureLabel.text = temperature
     }

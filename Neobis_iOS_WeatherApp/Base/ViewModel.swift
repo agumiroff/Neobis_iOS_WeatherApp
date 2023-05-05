@@ -10,7 +10,7 @@ import Foundation
 protocol ViewModel: AnyObject {
     
     associatedtype CoordinatorType
-    var coordinator: CoordinatorType? { get set }
+    var coordinator: CoordinatorType { get set }
     
 }
 

@@ -14,7 +14,7 @@ struct SearchModuleBuilder {
         coordinator: MainFlowCoordinator
     ) -> UIViewController {
         
-        let viewModel = SearchScreenViewModelImplementation()
+        let viewModel = SearchScreenViewModelImplementation(coordinator: coordinator)
         viewModel.coordinator = coordinator
         viewModel.networkService = DIContainer.standart.resolve()
         

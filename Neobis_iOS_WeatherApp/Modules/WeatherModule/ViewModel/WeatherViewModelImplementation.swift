@@ -12,11 +12,21 @@ import RxSwift
 class WeatherViewModelImplementation: ViewModel, WeatherViewModel {
     
     typealias CoordinatorType = MainFlowCoordinator
-    var coordinator: CoordinatorType?
+    var coordinator: CoordinatorType
     
     var weatherData: WeatherModelDomain?
     
     var state: BehaviorRelay<WeatherViewController.WeatherState> = BehaviorRelay(value: .initial)
+    
+    init(
+        coordinator: CoordinatorType,
+        weatherData: WeatherModelDomain
+    ) {
+        self.coordinator = coordinator
+        self.weatherData = weatherData
+        
+        state.accept(weatherData.list.isEmpty ? .error : .success)
+    }
     
 }
 
@@ -27,9 +37,9 @@ extension WeatherViewModelImplementation {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
             switch event {
             case .searchSelected:
-                self?.coordinator?.showSearchScreen()
+                self?.coordinator.showSearchScreen()
             }
-            self?.state.accept(.success)
+            self?.state.accept(.initial)
         })
     }
 }

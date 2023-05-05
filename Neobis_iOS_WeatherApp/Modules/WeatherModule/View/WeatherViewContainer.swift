@@ -63,7 +63,9 @@ extension WeatherViewContainer {
         print("container state \(state)")
         switch state {
         case .initial:
-            break //check coreData and load data from it, or send searchSelected event
+            errorView.isHidden = true
+            loadingView.isHidden = true
+            successView.isHidden = false //check coreData and load data from it, or send searchSelected event
         case .loading:
             errorView.isHidden = true
             loadingView.isHidden = false
