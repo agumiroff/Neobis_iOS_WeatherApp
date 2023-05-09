@@ -29,7 +29,7 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
     }
     
     private func searchCall(call: String) {
-        networkService?.getCoordinatesByLocationName(location: call, completion: {
+        try? networkService?.getCoordinatesByLocationName(location: call, completion: {
             [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -43,24 +43,12 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
         })
     }
     
-    private func showWeather(location: LocationModel) {
-        
-        networkService?.getWeatherData(location: location, completion: { [weak self] result in
-            
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    self?.coordinator.showMainScreen(
-                        data: data,
-                        location: location
-                    )
-                case .failure(let error):
-                    print(error)
-                }
-            }
-            
-        })
-        
+    private func showWeather(location: LocationModel) async {
+            guard let weather = try? await networkService?.getWeatherData(location: location)
+            else { return }
+        await MainActor.run {
+            coordinator.showMainScreen(data: weather, location: location)
+        }
     }
     
     private func cancelSearch() {
@@ -73,7 +61,9 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
             break
         case let .showWeather(state):
             self.state.accept(.init(context: SearchViewController.Context(), status: .loading))
-            showWeather(location: state.context.location)
+            Task {
+                await showWeather(location: state.context.location)
+            }
         case let .showCities(value: value):
             searchCall(call: value)
         case .pop:
@@ -81,11 +71,3 @@ class SearchScreenViewModelImplementation: SearchScreenViewModel, ViewModel {
         }
     }
 }
-
-//Task.init(operation: {
-//    let model = try? await self.networkService?.getWeatherData(location: location) //do try catch?
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-//        self.coordinator?.showMainScreen(data: model, location: location)
-//        self.state.accept(.success)
-//    })
-//})

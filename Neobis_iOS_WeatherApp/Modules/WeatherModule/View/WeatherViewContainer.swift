@@ -60,7 +60,6 @@ extension WeatherViewContainer {
     }
     
     func render(state: WeatherState) {
-        print("container state \(state)")
         switch state {
         case .initial:
             errorView.isHidden = true
