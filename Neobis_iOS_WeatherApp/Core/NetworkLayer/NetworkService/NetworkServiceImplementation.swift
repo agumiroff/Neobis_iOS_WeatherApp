@@ -14,9 +14,9 @@ class NetworkServiceImplementation: NetworkService {
         static let limit = 5
     }
     
-    func getCoordinatesByLocationName(
+    func getLocation(
         location: String,
-        completion: @escaping (Result<[LocationModel], Error>) -> Void
+        completion: @escaping NetworkServiceCompletion
     ) throws {
         
         guard let request = try? RequestBuilder<GeoRequest>
@@ -25,38 +25,26 @@ class NetworkServiceImplementation: NetworkService {
         
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: request) { (data, response, error) in
-            
             if let error = error {
-                completion(.failure(error)) // log error
-                return
-            }
-            
-            do {
-                guard let data = data else { return }
-                let dataFromJSON = try JSONDecoder().decode([LocationModel].self, from: data)
-                completion(.success(dataFromJSON))
-            } catch {
-                completion(.failure(error))
+                completion(nil, nil, error)
+            } else {
+                completion (data, response, nil)
             }
         }
         task.resume()
     }
     
-    func getWeatherData(location: LocationModel) async throws -> WeatherModel {
+    func getWeatherData(location: LocationModel) async throws -> Data {
         
         guard let request = try? RequestBuilder<WeatherRequest>
             .buildRequest(request: .fiveDayForecast(location: location))
         else { throw NetworkServiceErrors.badRequest }
         
         let task = URLSession.shared
-        let decoder = JSONDecoder()
-        let responce = try await task.data(for: request)
         
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let response = try await task.data(for: request)
         
-        let result = try decoder.decode(WeatherModel.self, from: responce.0)
-        
-        return result
+        return response.0
         
     }
 }

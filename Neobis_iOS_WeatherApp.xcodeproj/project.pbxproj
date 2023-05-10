@@ -854,6 +854,8 @@
 			dependencies = (
 			);
 			name = Neobis_iOS_WeatherApp;
+			packageProductDependencies = (
+			);
 			productName = Neobis_iOS_WeatherApp;
 			productReference = C6D62EC029F6FF9700B33E9D /* Neobis_iOS_WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -882,6 +884,8 @@
 				Base,
 			);
 			mainGroup = C6D62EB729F6FF9700B33E9D;
+			packageReferences = (
+			);
 			productRefGroup = C6D62EC129F6FF9700B33E9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
