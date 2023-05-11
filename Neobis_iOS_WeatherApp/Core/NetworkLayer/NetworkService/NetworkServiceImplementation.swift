@@ -9,43 +9,42 @@ import Foundation
 
 class NetworkServiceImplementation: NetworkService {
     
-    private enum ApiCall {
-        static let key = "10c23c3870e650a2d46ef9a8222dc0de"
-        static let limit = 5
+    func getGeoData(cityName: String) async throws -> [GeoModelAPI] {
+        let data = try await makeRequest(request:
+                                            GeoRequest(type: .cityName(cityName: cityName)))
+        let model = try buildModel(data: data) as [GeoModelAPI]
+        return model
     }
     
-    func getLocation(
-        location: String,
-        completion: @escaping NetworkServiceCompletion
-    ) throws {
-        
-        guard let request = try? RequestBuilder<GeoRequest>
-            .buildRequest(request: .cityName(cityName: location))
-        else { throw NetworkServiceErrors.badRequest }
-        
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(nil, nil, error)
-            } else {
-                completion (data, response, nil)
-            }
-        }
-        task.resume()
+    func getWeatherData(geoData: GeoModelDomain) async throws -> WeatherModelAPI {
+        let data = try await makeRequest(request: WeatherRequest(geoData: geoData))
+        let model = try buildModel(data: data) as WeatherModelAPI
+        return model
     }
+}
+
+extension NetworkServiceImplementation {
     
-    func getWeatherData(location: LocationModel) async throws -> Data {
+    private func makeRequest<Request: RequestType>(request: Request) async throws -> Data {
         
-        guard let request = try? RequestBuilder<WeatherRequest>
-            .buildRequest(request: .fiveDayForecast(location: location))
+        guard let request = try? RequestBuilder<Request>
+            .buildRequest(request: request)
         else { throw NetworkServiceErrors.badRequest }
         
         let task = URLSession.shared
-        
         let response = try await task.data(for: request)
         
         return response.0
+    }
+    
+    private func buildModel<T: Decodable>(data: Data) throws -> T {
         
+        let decoder = JSONDecoder()
+        guard let model = try? decoder.decode(T.self, from: data) else {
+            throw NetworkServiceErrors.decodeFail
+        }
+        
+        return model
     }
 }
 
@@ -54,4 +53,5 @@ enum NetworkServiceErrors: String, Error {
     case badData = "Data is empty"
     case locationIsNil = "Location is nil or empty"
     case emptyWeatherModel = "weather model is empty or nil"
+    case decodeFail = "decoding from data failed"
 }

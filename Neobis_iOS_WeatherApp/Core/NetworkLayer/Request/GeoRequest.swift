@@ -7,20 +7,24 @@
 
 import Foundation
 
-enum GeoRequest {
-    case cityName(cityName: String)
-    case zipCode(code: Double)
-}
 
-extension GeoRequest: RequestType {
+struct GeoRequest: RequestType {
+    
+    enum GeoRequestType {
+        case cityName(cityName: String)
+        case zipCode(code: Double)
+    }
+    
+    var type: GeoRequestType
     
     var baseURL: URL {
-        guard let url = URL(string: "https://api.openweathermap.org") else { fatalError("baseURL could not be configured.") }
+        guard let url = URL(string: "https://api.openweathermap.org")
+        else { fatalError("baseURL could not be configured.") }
         return url
     }
     
     var path: String {
-        switch self {
+        switch type {
         case .cityName:
             return "geo/1.0/direct"
         case .zipCode:
@@ -33,26 +37,29 @@ extension GeoRequest: RequestType {
     }
     
     var config: RequestConfig {
-        switch self {
+        switch type {
             
         case let .cityName(cityName):
             return .withParameters(
                 bodyParameters: nil,
                 urlParameters: [
-                    "q":cityName,
-                    "appid":NetworkManager.ApiCall.key,
-                    "limit": 5,
-                ]
-            )
+                    "q": cityName,
+                    "appid": APIKey.key,
+                    "limit": 5
+                ])
+            
         case let .zipCode(code):
             return .withParameters(
                 bodyParameters: nil,
                 urlParameters: [
-                    "zip":code,
-                    "appid":NetworkManager.ApiCall.key,
-                    "limit": 5,
-                ]
-            )
+                    "zip": code,
+                    "appid": APIKey.key,
+                    "limit": 5
+                ])
         }
+    }
+    
+    init(type: GeoRequestType) {
+        self.type = type
     }
 }

@@ -22,4 +22,3 @@ class MainFlowNavigation: AppNavigation {
         isToolbarHidden = true
     }
 }
-

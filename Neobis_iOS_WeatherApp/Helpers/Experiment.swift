@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol Interactor {
-    
-}
+protocol Interactor {}
 
 class Presenter <I: Interactor> {
     var interactor: I?
@@ -20,12 +18,9 @@ protocol ConcreteInteractor: Interactor {
 }
 
 class ConcreteInteractorImplementation: ConcreteInteractor {
-    func foo() {
-        
-    }
+    func foo() {}
     
     func bar() {}
-    
 }
 
 class ConcretePresenter <I>: Presenter<I> where I: ConcreteInteractor {

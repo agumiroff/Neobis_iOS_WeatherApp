@@ -12,14 +12,14 @@ import RxSwift
 
 class SearchErrorView: UIView {
     
-    private var _event: BehaviorSubject<ErrorEvent> = BehaviorSubject(value: .none)
+    private var _event = PublishRelay<ErrorEvent>()
     
     let errorMessage: UILabel = {
         let label = UILabel()
         label.text = "Error message here"
         label.font = UIFont(
-            name: Resources.Font.Name.regular,
-            size: Resources.Font.Size.title3
+            name: Resources.Font.regular,
+            size: Resources.Font.title3
         )
         label.textAlignment = .center
         label.textColor = .white
@@ -42,7 +42,7 @@ class SearchErrorView: UIView {
         gradient.frame = bounds
         gradient.colors = [
             UIColor(hexString: "#30A2C5").cgColor,
-            UIColor(hexString: "#000000").cgColor,
+            UIColor(hexString: "#000000").cgColor
         ]
         layer.insertSublayer(gradient, at: 0)
     }
@@ -59,11 +59,10 @@ class SearchErrorView: UIView {
 extension SearchErrorView {
     
     enum ErrorEvent {
-        case none
         case retry
     }
     
     var event: Observable<ErrorEvent> {
-        _event.asObserver()
+        _event.asObservable()
     }
 }

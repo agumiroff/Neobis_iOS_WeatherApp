@@ -11,10 +11,9 @@ import RxCocoa
 
 protocol MainFlowCoordinator: Coordinator {
 //
-    func showMainScreen(data: WeatherModel, location: LocationModel)
+    func showWeatherScreen(geoData: GeoModelDomain)
     
     func showSearchScreen()
     
     func pop()
-
 }

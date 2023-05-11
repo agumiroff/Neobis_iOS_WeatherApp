@@ -13,13 +13,13 @@ import RxCocoa
 
 class FiveDaysView: UIView {
     
-    private lazy var weatherList = [WeekDayModelDomain]()
+    private lazy var weatherList: [WeekDayModelDomain] = []
     
     private let fiveDaysLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(
-            name: Resources.Font.Name.bold,
-            size: Resources.Font.Size.regular3
+            name: Resources.Font.bold,
+            size: Resources.Font.regular3
         )
         label.textAlignment = .center
         label.textColor = .black
@@ -30,8 +30,8 @@ class FiveDaysView: UIView {
     private let dayLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(
-            name: Resources.Font.Name.regular,
-            size: Resources.Font.Size.regular1
+            name: Resources.Font.regular,
+            size: Resources.Font.regular1
         )
         label.textAlignment = .center
         label.textColor = .black
@@ -58,7 +58,14 @@ class FiveDaysView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let rect = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: UIRectCorner(arrayLiteral: .topRight, .topLeft), cornerRadii: CGSize(width: Resources.Constraints.fiveDaysRadius,height: Resources.Constraints.fiveDaysRadius))
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: UIRectCorner(arrayLiteral: .topRight, .topLeft),
+            cornerRadii: CGSize(
+                width: Resources.Constraints.fiveDaysRadius,
+                height: Resources.Constraints.fiveDaysRadius
+            )
+        )
         
         UIColor.white.set()
         path.fill()
@@ -106,5 +113,4 @@ class FiveDaysView: UIView {
     func configureView(data: [WeekDayModelDomain]) {
         updateUI(with: data)
     }
-    
 }

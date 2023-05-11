@@ -47,12 +47,12 @@ class SearchViewContainer: UIView {
     }
     
     func render(state: SearchViewController.State) {
-        switch state.status {
-        case .initial, .loaded:
+        switch state {
+        case .initial:
             errorView.isHidden = true
             loadingView.isHidden = true
             loadedView.isHidden = false
-            loadedView.render(cities: state.context.cities)
+            loadedView.render(cities: [])
         case .loading:
             errorView.isHidden = true
             loadingView.isHidden = false
@@ -61,36 +61,42 @@ class SearchViewContainer: UIView {
             errorView.isHidden = false
             loadingView.isHidden = true
             loadedView.isHidden = true
-        
+        case let .loaded(cities):
+            errorView.isHidden = true
+            loadingView.isHidden = true
+            loadedView.isHidden = false
+            loadedView.render(cities: cities)
         }
     }
 }
 
 extension SearchViewContainer {
     
-    var event: Observable<SearchViewController.Event> {
+    enum Event {
+        case citySelected(city: GeoModelDomain)
+        case showCityList(value: String)
+        case cancelSearch
+    }
+    
+    var event: Observable<Event> {
         Observable.merge(
             loadedView.event
                 .map({ event in
                     switch event {
-                    case .none:
-                        return .none
-                    case let .showCities(value: data):
-                        return .showCities(value: data)
-                    case let .showWeather(state: state):
-                        return .showWeather(state: state)
-                    case .pop:
-                        return .pop
+                    case let .citySelected(city):
+                        return .citySelected(city: city)
+                    case let .searchDidChange(text):
+                        return .showCityList(value: text)
+                    case .cancelSearch:
+                        return .cancelSearch
                     }
                 }),
             
             errorView.event
                 .map({ event in
                     switch event {
-                    case .none:
-                        return .none
                     case .retry:
-                        return .showCities(value: "")
+                        return .showCityList(value: "")
                     }
                 })
         )

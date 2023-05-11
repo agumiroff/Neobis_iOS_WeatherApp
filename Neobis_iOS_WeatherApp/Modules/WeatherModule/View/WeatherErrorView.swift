@@ -17,8 +17,8 @@ class WeatherErrorView: UIView {
         let label = UILabel()
         label.text = "Error message here"
         label.font = UIFont(
-            name: Resources.Font.Name.regular,
-            size: Resources.Font.Size.title3
+            name: Resources.Font.regular,
+            size: Resources.Font.title3
         )
         label.textAlignment = .center
         label.textColor = .white
@@ -41,7 +41,7 @@ class WeatherErrorView: UIView {
         gradient.frame = bounds
         gradient.colors = [
             UIColor(hexString: "#30A2C5").cgColor,
-            UIColor(hexString: "#000000").cgColor,
+            UIColor(hexString: "#000000").cgColor
         ]
         layer.insertSublayer(gradient, at: 0)
     }
@@ -66,4 +66,3 @@ extension WeatherErrorView {
         _event.asObserver()
     }
 }
-

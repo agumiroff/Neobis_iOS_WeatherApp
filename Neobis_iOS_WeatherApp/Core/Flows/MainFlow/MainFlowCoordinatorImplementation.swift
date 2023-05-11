@@ -24,27 +24,25 @@ class MainFlowCoordinatorImplementation<N>: AppCoordinator<N> where N: MainFlowN
         
         showSearchScreen()
     }
-
 }
 
 extension MainFlowCoordinatorImplementation: MainFlowCoordinator {
     
     //    func finish
     //    showMainScreen
-    func showMainScreen(data: WeatherModel, location: LocationModel) {
+    func showWeatherScreen(geoData: GeoModelDomain) {
         
-        let vc = WeatherModuleBuilder.buildWeatherModule(
-            coordinator: self,
-            data: data,
-            location: location
+        let view = WeatherModuleBuilder.buildWeatherModule(
+            geoData: geoData,
+            coordinator: self
         )
         
-        navigationController?.viewControllers = [vc]
+        navigationController?.viewControllers = [view]
     }
     
     func showSearchScreen() {
-        let vc = SearchModuleBuilder.buildSearchModule(coordinator: self)
-        navigationController?.pushViewController(vc, animated: false)
+        let view = SearchModuleBuilder.buildSearchModule(coordinator: self)
+        navigationController?.pushViewController(view, animated: false)
     }
     
     func pop() {

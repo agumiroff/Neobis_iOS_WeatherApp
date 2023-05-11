@@ -8,20 +8,21 @@
 import Foundation
 import UIKit
 
-struct SearchModuleBuilder {
+enum SearchModuleBuilder {
     
     static func buildSearchModule(
         coordinator: MainFlowCoordinator
     ) -> UIViewController {
         
-        let viewModel = SearchScreenViewModelImplementation(coordinator: coordinator)
-        viewModel.coordinator = coordinator
-        viewModel.networkService = DIContainer.standart.resolve()
+        let geoRepository = GeoRepositoryImpl(networkService: DIContainer.standart.resolve())
         
-        let view = SearchViewController()
-        view.viewModel = viewModel
+        let viewModel = SearchViewModelImpl(
+            coordinator: coordinator,
+            geoRepository: geoRepository
+        )
+        
+        let view = SearchViewController(viewModel: viewModel)
         
         return view
-        
     }
 }

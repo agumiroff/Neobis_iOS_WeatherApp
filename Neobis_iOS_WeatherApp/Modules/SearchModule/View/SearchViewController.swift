@@ -13,12 +13,20 @@ import RxCocoa
 
 class SearchViewController: UIViewController {
     
-    typealias ViewModelType = SearchScreenViewModel
-    var viewModel: ViewModelType?
+    var viewModel: SearchViewModel
      
     private let container = SearchViewContainer()
     
     private let disposeBag = DisposeBag()
+    
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +47,7 @@ class SearchViewController: UIViewController {
     
     private func bindState() {
         
-        viewModel?.state
+        viewModel.state
             .asObservable()
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
@@ -52,14 +60,12 @@ class SearchViewController: UIViewController {
             .subscribe(onNext: { [weak self] event in
                 guard let self = self else { return }
                 switch event {
-                case .none:
-                    break
-                case let .showWeather(state: state):
-                    self.viewModel?.handleEvent(event: .showWeather(state: state))
-                case let .showCities(value: value):
-                    self.viewModel?.handleEvent(event: .showCities(value: value))
-                case .pop:
-                    self.viewModel?.handleEvent(event: .pop)
+                case let .citySelected(geoData):
+                    self.viewModel.handleEvent(event: .showWeather(geoData: geoData))
+                case let .showCityList(value):
+                    self.viewModel.handleEvent(event: .showCities(value: value))
+                case .cancelSearch:
+                    self.viewModel.handleEvent(event: .pop)
                 }
             })
             .disposed(by: disposeBag)
@@ -70,21 +76,20 @@ class SearchViewController: UIViewController {
         gradient.frame = view.bounds
         gradient.colors = [
             UIColor(hexString: "#30A2C5").cgColor,
-            UIColor(hexString: "#000000").cgColor,
+            UIColor(hexString: "#000000").cgColor
         ]
         view.layer.insertSublayer(gradient, at: 0)
     }
-    
 }
 
 extension SearchViewController {
     
     func render(state: State) {
-        switch state.status {
+        switch state {
         case .initial:
             container.render(state: state)
-        case .loaded:
-            container.render(state: .init(context: state.context))
+        case let .loaded(cities):
+            container.render(state: .loaded(cities: cities))
         case .loading:
             container.render(state: state)
         case .failure:
@@ -92,27 +97,15 @@ extension SearchViewController {
         }
     }
     
-    struct State {
-        var context: Context
-        var status: Status = .initial
-    }
-    
-    struct Context {
-        var location = LocationModel(name: "", lat: 0, lon: 0, country: "")
-        var cities = [LocationModel]()
-        var weather: WeatherModel = WeatherModel(list: [])
-    }
-    
-    enum Status {
+    enum State {
         case initial
-        case loaded
+        case loaded(cities: [GeoModelDomain])
         case loading
         case failure
     }
     
     enum Event {
-        case none
-        case showWeather(state: State)
+        case showWeather(geoData: GeoModelDomain)
         case showCities(value: String)
         case pop
     }

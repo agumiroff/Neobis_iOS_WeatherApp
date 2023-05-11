@@ -18,8 +18,8 @@ class TemperatureView: UIView {
     private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(
-            name: Resources.Font.Name.thin,
-            size: Resources.Font.Size.title4
+            name: Resources.Font.thin,
+            size: Resources.Font.title4
         )
         label.textAlignment = .center
         label.textColor = .black
@@ -44,7 +44,7 @@ class TemperatureView: UIView {
     private func setupViews() {
         
         addSubViews(subViews: [
-            cloudImage, temperatureLabel,
+            cloudImage, temperatureLabel
         ])
         
         
@@ -70,5 +70,4 @@ class TemperatureView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol SearchScreenViewModel {
+protocol SearchViewModel {
     
-    var cities: [LocationModel] { get }
+    var cities: [GeoModelDomain] { get }
     
     var state: BehaviorRelay<SearchViewController.State> { get }
     

@@ -8,12 +8,13 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 
 class SearchLoadedView: UIView {
     
-    private var cities = [LocationModel]()
+    private var cities: [GeoModelDomain] = []
     
-    private var _event: BehaviorSubject<SearchViewController.Event> = BehaviorSubject(value: .none)
+    private var _event = PublishRelay<Event>()
     
     private let searchView = SearchView()
     
@@ -108,20 +109,17 @@ class SearchLoadedView: UIView {
     private func bindText() {
         searchField.rx.text
             .asObservable()
-            .subscribe {[weak self]  _ in
-                if self?.searchField.text == "" { return }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
-                    self?._event.onNext(.showCities(value: self?.searchField.text ?? ""))
-                    //                     self?.viewModel?.searchCall(call: self?.searchField.text ?? "")
-                })
-            }
+            .subscribe(onNext: {[weak self] text in
+                if text == "" { return }
+                guard let self = self else { return }
+                self._event.accept(.searchDidChange(text: (text ?? "") ))
+            })
             .disposed(by: disposeBag)
     }
     
     @objc private func cancelSearch() {
-        _event.onNext(.pop)
+        _event.accept(.cancelSearch)
     }
-    
 }
 
 extension SearchLoadedView: UICollectionViewDelegate,
@@ -129,39 +127,59 @@ extension SearchLoadedView: UICollectionViewDelegate,
                              UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //Items in section. There should be [arrayWithData].count
+        // Items in section. There should be [arrayWithData].count
         cities.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //put your cell here
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.cellId, for: indexPath) as? CollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        // put your cell here
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CollectionViewCell.cellId,
+            for: indexPath
+        ) as? CollectionViewCell
         else { return UICollectionViewCell()}
         cell.configureCell(city: cities[indexPath.row].name, country: cities[indexPath.row].country)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         CGSize(width: collectionView.bounds.width - 20, height: 40)
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        _event.onNext(.showWeather(state: .init(context: .init(location: cities[indexPath.row]))))
+        _event.accept(.citySelected(city: cities[indexPath.row]))
     }
 }
 
 extension SearchLoadedView {
     
-    var event: Observable<SearchViewController.Event> {
-        _event.asObserver()
+    enum Event {
+        case citySelected(city: GeoModelDomain)
+        case searchDidChange(text: String)
+        case cancelSearch
     }
     
-    func render(cities: [LocationModel]) {
+    var event: Observable<Event> {
+        _event.asObservable()
+    }
+    
+    func render(cities: [GeoModelDomain]) {
         self.cities = cities
         collection.reloadData()
     }

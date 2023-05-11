@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-class ImageCache {
-    
+enum ImageCache {
     static let shared = NSCache<NSString, UIImage>()
-    
 }

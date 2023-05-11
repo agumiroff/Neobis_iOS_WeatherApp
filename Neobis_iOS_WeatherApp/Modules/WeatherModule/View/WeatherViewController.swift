@@ -9,20 +9,21 @@ import Foundation
 import UIKit
 import RxSwift
 
-class WeatherViewController: UIViewController, ViewController {   // hasViewModel??
+class WeatherViewController: UIViewController {
     
-    typealias ViewModelType = WeatherViewModel
-    var viewModel: ViewModelType?
+    var viewModel: WeatherViewModel
     
     private let container = WeatherViewContainer()
     
     private let disposeBag = DisposeBag()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.isToolbarHidden = true
+    init(viewModel: WeatherViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class WeatherViewController: UIViewController, ViewController {   // hasViewMode
         setupGradient()
         bindViewModel()
         setupUI()
+        viewModel.handleEvent(event: .showWeather)
     }
     
     
@@ -39,7 +41,7 @@ class WeatherViewController: UIViewController, ViewController {   // hasViewMode
         gradient.frame = view.bounds
         gradient.colors = [
             UIColor(hexString: "#30A2C5").cgColor,
-            UIColor(hexString: "#000000").cgColor,
+            UIColor(hexString: "#000000").cgColor
         ]
         view.layer.insertSublayer(gradient, at: 0)
     }
@@ -54,7 +56,7 @@ class WeatherViewController: UIViewController, ViewController {   // hasViewMode
     }
     
     private func bindViewModel() {
-        viewModel?.state
+        viewModel.state
             .asObservable()
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
@@ -68,7 +70,7 @@ class WeatherViewController: UIViewController, ViewController {   // hasViewMode
                 guard let self = self else { return }
                 switch event {
                 case .searchSelected:
-                    self.viewModel?.handleEvent(event: .searchSelected)
+                    self.viewModel.handleEvent(event: .searchSelected)
                 case .none:
                     break
                 }
@@ -81,6 +83,7 @@ extension WeatherViewController {
     
     enum WeatherEvent {
         case searchSelected
+        case showWeather
     }
     
     enum WeatherState {
@@ -95,7 +98,7 @@ extension WeatherViewController {
         case .loading:
             container.render(state: .loading)
         case .success:
-            guard let data = viewModel?.weatherData else { return }
+            guard let data = viewModel.weatherData else { return }
             container.render(state: .success(data))
         case .error:
             container.render(state: .error)

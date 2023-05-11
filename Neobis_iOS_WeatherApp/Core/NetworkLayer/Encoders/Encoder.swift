@@ -19,11 +19,17 @@ enum Encoder {
         do {
             switch self {
             case .urlEncoding:
-                guard let urlParameters = urlParameters else { return }
+                guard let urlParameters = urlParameters else { throw  EncoderError.parametersNil}
                 try URLEncoder.encode(urlRequest: &urlRequest, with: urlParameters)
             }
         } catch {
-            throw error
+            throw EncoderError.encodingFailed
         }
     }
+}
+
+public enum EncoderError: String, Error {
+    case parametersNil = "Parameters were nil."
+    case encodingFailed = "Parameter encoding failed."
+    case missingURL = "URL is nil."
 }

@@ -13,9 +13,7 @@ protocol Coordinator: AnyObject {
 }
 
 class AppCoordinator<N: Navigation>: Coordinator {
-    func delete() {
-        
-    }
+    func delete() {}
     
     weak var navigationController: N?
     
@@ -25,5 +23,4 @@ class AppCoordinator<N: Navigation>: Coordinator {
     }
     
     func start() {}
-    
 }

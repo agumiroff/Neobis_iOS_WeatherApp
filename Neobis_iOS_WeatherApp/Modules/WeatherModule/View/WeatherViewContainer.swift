@@ -64,7 +64,7 @@ extension WeatherViewContainer {
         case .initial:
             errorView.isHidden = true
             loadingView.isHidden = true
-            successView.isHidden = false //check coreData and load data from it, or send searchSelected event
+            successView.isHidden = false // check coreData and load data from it, or send searchSelected event
         case .loading:
             errorView.isHidden = true
             loadingView.isHidden = false
@@ -73,12 +73,11 @@ extension WeatherViewContainer {
             errorView.isHidden = true
             loadingView.isHidden = true
             successView.isHidden = false
-            successView.renderUI(state: .init(weatherData: data))
+            successView.renderUI(data: data)
         case .error:
             errorView.isHidden = false
             loadingView.isHidden = true
             successView.isHidden = true
-        
         }
     }
 }

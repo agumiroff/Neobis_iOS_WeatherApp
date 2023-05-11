@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RequestBuilder<Request: RequestType> {
+enum RequestBuilder<Request: RequestType> {
     
     static func buildRequest(request: Request) throws -> URLRequest {
         var configuredRequest = URLRequest(url: request.baseURL.appendingPathComponent(request.path),
@@ -29,10 +29,10 @@ struct RequestBuilder<Request: RequestType> {
                     urlRequest: &configuredRequest
                 )
                 
-            case .withParametersAndHeaders(
-                bodyParameters: let bodyParameters,
-                urlParameters: let urlParameters,
-                headers: let headers
+            case let .withParametersAndHeaders(
+                bodyParameters,
+                urlParameters,
+                headers
             ):
                 try self.configParameters(
                     bodyParameters: bodyParameters,
@@ -45,7 +45,6 @@ struct RequestBuilder<Request: RequestType> {
                     urlRequest: &configuredRequest
                 )
             }
-            print(configuredRequest.url)
             return configuredRequest
         } catch {
             throw error

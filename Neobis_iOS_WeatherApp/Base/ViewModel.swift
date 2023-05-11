@@ -11,6 +11,4 @@ protocol ViewModel: AnyObject {
     
     associatedtype CoordinatorType
     var coordinator: CoordinatorType { get set }
-    
 }
-

@@ -9,12 +9,8 @@ import Foundation
 
 
 protocol NetworkService: AnyObject {
-    typealias NetworkServiceCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
-    func getLocation(
-        location: String,
-        completion: @escaping NetworkServiceCompletion
-    ) throws
     
-    func getWeatherData(location: LocationModel) async throws -> Data
+    func getWeatherData(geoData: GeoModelDomain) async throws -> WeatherModelAPI
+    
+    func getGeoData(cityName: String) async throws -> [GeoModelAPI]
 }
-

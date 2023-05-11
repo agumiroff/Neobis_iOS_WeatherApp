@@ -13,8 +13,8 @@ class WeekDayView: UIView {
     private let dayLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(
-            name: Resources.Font.Name.regular,
-            size: Resources.Font.Size.regular1
+            name: Resources.Font.regular,
+            size: Resources.Font.regular1
         )
         label.textAlignment = .center
         label.textColor = .black
@@ -24,8 +24,8 @@ class WeekDayView: UIView {
     private let temperatureLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(
-            name: Resources.Font.Name.regular,
-            size: Resources.Font.Size.regular1
+            name: Resources.Font.regular,
+            size: Resources.Font.regular1
         )
         label.textAlignment = .center
         label.textColor = .black

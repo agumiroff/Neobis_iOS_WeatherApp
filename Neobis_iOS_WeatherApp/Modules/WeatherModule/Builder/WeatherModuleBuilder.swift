@@ -8,23 +8,22 @@
 import Foundation
 import UIKit
 
-struct WeatherModuleBuilder {
+enum WeatherModuleBuilder {
     
     static func buildWeatherModule(
-        coordinator: MainFlowCoordinator,
-        data: WeatherModel,
-        location: LocationModel
+        geoData: GeoModelDomain,
+        coordinator: MainFlowCoordinator
     ) -> UIViewController {
+        let weatherRepository = WeatherRepositoryImpl(networkService:
+                                                        DIContainer.standart.resolve())
         
-        let viewModel = WeatherViewModelImplementation(
+        let viewModel = WeatherViewModelImpl(
+            geoData: geoData,
             coordinator: coordinator,
-            weatherData: WeatherModelDomain(
-            location: location,
-            weather: data
-        ))
+            weatherRepository: weatherRepository
+        )
         
-        let view = WeatherViewController()
-        view.viewModel = viewModel
+        let view = WeatherViewController(viewModel: viewModel)
         
         return view
     }

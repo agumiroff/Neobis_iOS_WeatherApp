@@ -32,4 +32,3 @@ class SearchView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

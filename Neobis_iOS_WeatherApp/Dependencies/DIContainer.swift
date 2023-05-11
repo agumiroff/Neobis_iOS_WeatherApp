@@ -11,7 +11,7 @@ class DIContainer {
     
     static var standart = DIContainer()
     
-    private var dependencies = [String: Weak]()
+    private var dependencies: [String: Weak] = [:]
     
     func register<Dependency>(_ dependency: Dependency) {
         let key = "\(type(of: Dependency.self))"
@@ -24,7 +24,9 @@ class DIContainer {
         let weak = dependencies[key]
         
         if weak != nil {
-            return weak?.weakValue as! Dependency
+            guard let dependency = weak?.weakValue as? Dependency
+            else { fatalError("value is nil") }
+            return dependency
         } else {
             fatalError("Dependency not found")
         }

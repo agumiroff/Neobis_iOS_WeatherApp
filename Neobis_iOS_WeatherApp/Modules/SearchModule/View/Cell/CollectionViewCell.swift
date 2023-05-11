@@ -14,7 +14,7 @@ class CollectionViewCell: UICollectionViewCell {
     private let city: UILabel = {
         let label = UILabel()
         label.text = "Error message here"
-        label.font = UIFont(name: Resources.Font.Name.regular, size: Resources.Font.Size.title1)
+        label.font = UIFont(name: Resources.Font.regular, size: Resources.Font.title1)
         label.textAlignment = .left
         label.textColor = .black
         return label
@@ -23,7 +23,7 @@ class CollectionViewCell: UICollectionViewCell {
     private let country: UILabel = {
         let label = UILabel()
         label.text = "Error message here"
-        label.font = UIFont(name: Resources.Font.Name.regular, size: Resources.Font.Size.title1)
+        label.font = UIFont(name: Resources.Font.regular, size: Resources.Font.title1)
         label.textAlignment = .left
         label.textColor = .black
         return label
@@ -58,5 +58,4 @@ class CollectionViewCell: UICollectionViewCell {
         self.city.text = city
         self.country.text = country
     }
-    
 }

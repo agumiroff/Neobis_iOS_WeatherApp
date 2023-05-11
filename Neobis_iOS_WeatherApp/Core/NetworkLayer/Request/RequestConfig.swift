@@ -7,8 +7,8 @@
 
 import Foundation
 
-typealias Parameters = [String:Any]
-typealias HTTPHeaders = [String:String]
+typealias Parameters = [String: Any]
+typealias HTTPHeaders = [String: String]
 
 enum RequestConfig {
     

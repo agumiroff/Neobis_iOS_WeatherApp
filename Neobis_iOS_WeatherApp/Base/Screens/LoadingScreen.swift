@@ -31,12 +31,12 @@ class LoadingScreen: UIView {
         var opacityValue = 1.0
         var isVisible = true
         
-        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             
             if isVisible {
-                opacityValue -= 1/100
+                opacityValue -= 1 / 100
             } else {
-                opacityValue += 1/100
+                opacityValue += 1 / 100
             }
             
             if opacityValue <= 0 {
@@ -51,7 +51,6 @@ class LoadingScreen: UIView {
         }
 //
     }
-    
 }
 
 class LoadingView: UIView {

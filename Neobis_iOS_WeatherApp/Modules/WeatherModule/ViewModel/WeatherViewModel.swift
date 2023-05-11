@@ -16,6 +16,6 @@ protocol WeatherViewModel: AnyObject {
     var state: BehaviorRelay<WeatherViewController.WeatherState> { get }
     
     func handleEvent(event: WeatherViewController.WeatherEvent)
+    
+    func viewDidLoad()
 }
-
-

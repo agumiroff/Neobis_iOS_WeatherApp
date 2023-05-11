@@ -7,22 +7,19 @@
 
 import Foundation
 
-struct WeatherModel: Codable {
+struct WeatherModelAPI: Codable {
     let list: [WeatherList]
 }
 
 struct Weather: Codable {
     let description: String
     let icon: String
-    
 }
 
 struct WeatherList: Codable {
     let dt: Double
-    let main: Dictionary<String, Double>
+    let main: [String: Double]
     let weather: [Weather]
-    let wind: Dictionary<String, Double>
+    let wind: [String: Double]
     let visibility: Double
 }
-
-

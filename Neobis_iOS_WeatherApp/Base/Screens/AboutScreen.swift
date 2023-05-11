@@ -14,8 +14,6 @@ class AboutScreen: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -38,12 +36,12 @@ class AboutScreen: UIViewController {
         var opacityValue = 1.0
         var isVisible = true
         
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             
             if isVisible {
-                opacityValue -= 1/100
+                opacityValue -= 1 / 100
             } else {
-                opacityValue += 1/100
+                opacityValue += 1 / 100
             }
             
             if opacityValue <= 0 {
@@ -64,9 +62,7 @@ class AboutScreen: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             timer.invalidate()
             self.startTransition(loader: loader)
-            DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-                
-            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {})
 //            worker.notify(queue: .main, execute: {
 //                loader.removeFromSuperview()
 //            })

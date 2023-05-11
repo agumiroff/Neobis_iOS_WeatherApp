@@ -35,10 +35,8 @@ extension UIImageView {
         queue.async(execute: workItem)
         
         workItem.notify(queue: .main, execute: { [ weak self] in
-            self?.imageCache(urlString: urlString, image: image ?? UIImage(systemName: "house")!)
+            self?.imageCache(urlString: urlString, image: image ?? UIImage())
             self?.image = image
         })
-        
-        
     }
 }

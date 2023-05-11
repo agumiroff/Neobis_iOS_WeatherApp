@@ -27,48 +27,48 @@ final class WeatherSuccessView: UIView {
     
     private let fiveDaysView = FiveDaysView()
     
-    private let dateLabel = CustomLabel(font: Resources.Font.Name.regular,
-                                        size: Resources.Font.Size.regular3,
+    private let dateLabel = CustomLabel(font: Resources.Font.regular,
+                                        size: Resources.Font.regular3,
                                         text: "Today, May 7th, 2021", color: .white)
     
-    private let city = CustomLabel(font: Resources.Font.Name.bold,
-                                   size: Resources.Font.Size.title3,
+    private let city = CustomLabel(font: Resources.Font.bold,
+                                   size: Resources.Font.title3,
                                    text: "Barcelona", color: .white)
     
-    private let country = CustomLabel(font: Resources.Font.Name.regular,
-                                      size: Resources.Font.Size.title1,
+    private let country = CustomLabel(font: Resources.Font.regular,
+                                      size: Resources.Font.title1,
                                       text: "Spain", color: .white)
     
-    private let windStatus = CustomLabel(font: Resources.Font.Name.bold,
-                                         size: Resources.Font.Size.regular3,
+    private let windStatus = CustomLabel(font: Resources.Font.bold,
+                                         size: Resources.Font.regular3,
                                          text: "Wind status", color: .white)
     
-    private let windSpeed = CustomLabel(font: Resources.Font.Name.regular,
-                                        size: Resources.Font.Size.title1,
+    private let windSpeed = CustomLabel(font: Resources.Font.regular,
+                                        size: Resources.Font.title1,
                                         text: "7 mph", color: .white)
     
-    private let visibility = CustomLabel(font: Resources.Font.Name.regular,
-                                         size: Resources.Font.Size.regular3,
+    private let visibility = CustomLabel(font: Resources.Font.regular,
+                                         size: Resources.Font.regular3,
                                          text: "Visibility", color: .white)
     
-    private let visibilityRange = CustomLabel(font: Resources.Font.Name.regular,
-                                              size: Resources.Font.Size.title1,
+    private let visibilityRange = CustomLabel(font: Resources.Font.regular,
+                                              size: Resources.Font.title1,
                                               text: "6.4 miles", color: .white)
     
-    private let humidity = CustomLabel(font: Resources.Font.Name.regular,
-                                       size: Resources.Font.Size.regular3,
+    private let humidity = CustomLabel(font: Resources.Font.regular,
+                                       size: Resources.Font.regular3,
                                        text: "Humidity", color: .white)
     
-    private let humidityValue = CustomLabel(font: Resources.Font.Name.regular,
-                                            size: Resources.Font.Size.title1,
+    private let humidityValue = CustomLabel(font: Resources.Font.regular,
+                                            size: Resources.Font.title1,
                                             text: "85%", color: .white)
     
-    private let airPressure = CustomLabel(font: Resources.Font.Name.regular,
-                                          size: Resources.Font.Size.regular3,
+    private let airPressure = CustomLabel(font: Resources.Font.regular,
+                                          size: Resources.Font.regular3,
                                           text: "Air pressure", color: .white)
     
-    private let airPressureValue = CustomLabel(font: Resources.Font.Name.regular,
-                                               size: Resources.Font.Size.title1,
+    private let airPressureValue = CustomLabel(font: Resources.Font.regular,
+                                               size: Resources.Font.title1,
                                                text: "998 mb", color: .white)
     
     override init(frame: CGRect) {
@@ -83,9 +83,12 @@ final class WeatherSuccessView: UIView {
     }
     
     private func setupUI() {
-        
         addSubViews(subViews: [
-            searchLogo, dateLabel, city, country, temperatureView, windStatus, windSpeed, visibility, visibilityRange, humidity, humidityValue, airPressure, airPressureValue, fiveDaysView,
+            searchLogo, dateLabel, city,
+            country, temperatureView, windStatus,
+            windSpeed, visibility, visibilityRange,
+            humidity, humidityValue, airPressure,
+            airPressureValue, fiveDaysView
         ])
         
         searchLogo.addTarget(self, action: #selector(searchCity), for: .touchUpInside)
@@ -99,8 +102,6 @@ final class WeatherSuccessView: UIView {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .medium
-        
-        
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -179,7 +180,6 @@ final class WeatherSuccessView: UIView {
                 .offset(30)
             make.bottom.left.right.equalToSuperview()
         }
-        
     }
    
     
@@ -187,8 +187,8 @@ final class WeatherSuccessView: UIView {
         _event.onNext(.search)
     }
     
-    func renderUI(state: State) {
-        _weather = state.weatherData
+    func renderUI(data: WeatherModelDomain) {
+        _weather = data
         setData()
     }
     
@@ -217,7 +217,6 @@ final class WeatherSuccessView: UIView {
         airPressureValue.text = String(weather.pressure)
         
         fiveDaysView.configureView(data: weather.list)
-        
     }
 }
 
@@ -230,11 +229,5 @@ extension WeatherSuccessView {
     
     var event: Observable<WeatherViewEvent> {
         _event.asObserver()
-    }
-}
-
-extension WeatherSuccessView {
-    struct State {
-        let weatherData: WeatherModelDomain
     }
 }
