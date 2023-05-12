@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkServiceImplementation: NetworkService {
+class NetworkServiceImpl: NetworkService {
     
     func getGeoData(cityName: String) async throws -> [GeoModelAPI] {
         let data = try await makeRequest(request:
@@ -23,7 +23,7 @@ class NetworkServiceImplementation: NetworkService {
     }
 }
 
-extension NetworkServiceImplementation {
+extension NetworkServiceImpl {
     
     private func makeRequest<Request: RequestType>(request: Request) async throws -> Data {
         

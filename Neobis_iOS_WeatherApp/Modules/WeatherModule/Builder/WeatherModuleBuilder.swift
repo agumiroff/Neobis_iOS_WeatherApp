@@ -14,8 +14,10 @@ enum WeatherModuleBuilder {
         geoData: GeoModelDomain,
         coordinator: MainFlowCoordinator
     ) -> UIViewController {
-        let weatherRepository = WeatherRepositoryImpl(networkService:
-                                                        DIContainer.standart.resolve())
+        let weatherRepository = WeatherRepositoryImpl(
+            networkService: DIContainer.standart.resolve(),
+            storageManager: DIContainer.standart.resolve()
+        )
         
         let viewModel = WeatherViewModelImpl(
             geoData: geoData,

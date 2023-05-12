@@ -7,13 +7,11 @@
 
 import Foundation
 
-struct WeekDayModelDomain {
+class WeekDayModelDomain: NSObject {
     let weatherImage: String
     let day: String
     let temperature: String
-}
-
-extension WeekDayModelDomain {
+    
     init(weather: WeatherList) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"

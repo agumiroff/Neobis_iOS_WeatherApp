@@ -10,9 +10,14 @@ import Foundation
 class WeatherRepositoryImpl: WeatherRepository {
     
     private let networkService: NetworkService
+    private let storageManager: StorageManager
     
-    init(networkService: NetworkService) {
+    init(
+        networkService: NetworkService,
+        storageManager: StorageManager
+    ) {
         self.networkService = networkService
+        self.storageManager = storageManager
     }
     
     func getWeatherData(geoData: GeoModelDomain) async throws -> WeatherModelDomain {

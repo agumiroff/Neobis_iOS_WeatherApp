@@ -7,9 +7,10 @@
 
 import Foundation
 
-class DIContainer {
+final class DIContainer {
     
-    static var standart = DIContainer()
+    public static let standart = DIContainer()
+    private init() {}
     
     private var dependencies: [String: Weak] = [:]
     

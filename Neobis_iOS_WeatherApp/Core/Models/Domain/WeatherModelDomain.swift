@@ -36,7 +36,6 @@ extension WeatherModelDomain {
         self.visibility = weather.list.first?.visibility ?? 0.0
         self.country = location.country
         self.name = location.name
-        
         self.list = list
     }
 }

@@ -51,8 +51,10 @@ extension WeatherViewModelImpl {
         state.accept(.loading)
         switch event {
         case .searchSelected:
-            self.coordinator.showSearchScreen()
-            self.state.accept(.initial)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.coordinator.showSearchScreen()
+                self.state.accept(.initial)
+            })
         case .showWeather:
             getWeatherData(geoData: geoData)
         }

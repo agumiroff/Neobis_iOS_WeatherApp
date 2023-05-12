@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/gg/Development/Neobis/Neobis_iOS_WeatherApp/Neobis_iOS_WeatherApp/CoreData/WeatherModelCD.swift">
+   </FileRef>
+   <FileRef
       location = "group:Neobis_iOS_WeatherApp.xcodeproj">
    </FileRef>
    <FileRef

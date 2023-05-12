@@ -71,8 +71,6 @@ class WeatherViewController: UIViewController {
                 switch event {
                 case .searchSelected:
                     self.viewModel.handleEvent(event: .searchSelected)
-                case .none:
-                    break
                 }
             })
             .disposed(by: disposeBag)
